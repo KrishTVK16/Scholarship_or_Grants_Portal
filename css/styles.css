@@ -1,0 +1,463 @@
+/* ============================================
+   ScholarHub - Core Styles & Design System
+   ============================================ */
+
+/* CSS Variables - Design System */
+:root {
+  /* Core Colors - COMBINED-COLOR SYSTEM (All Colors Together) */
+  --primary: #1E3A8A; /* Blue */
+  --secondary: #374151; /* Graphite - Neutral Base */
+  --accent-yellow: #FBBF24; /* Yellow */
+  --accent-red: #DC2626; /* Red */
+  --support-indigo: #1E3A8A; /* Map indigo to blue */
+  
+  /* Legacy support (mapped to new colors) */
+  --accent-purple: #1E3A8A;
+  --accent-cyan: #1E3A8A;
+  --accent-pink: #DC2626;
+  
+  /* Background Colors */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #1E3A8A; /* Use blue for headings */
+  --text-secondary: #374151; /* Use graphite for body text */
+  
+  /* Combined Color Gradients - All colors together */
+  --gradient-header: linear-gradient(135deg, #1E3A8A, #374151); /* Header background */
+  --gradient-header-accent: linear-gradient(90deg, #FBBF24, #DC2626); /* Header bottom accent line */
+  --gradient-button: linear-gradient(135deg, #1E3A8A, #FBBF24); /* Primary Button - Blue to Yellow */
+  --gradient-hero: linear-gradient(135deg, #1E3A8A, #374151); /* Header / Hero Gradient */
+  --gradient-card-accent: linear-gradient(90deg, #1E3A8A, #FBBF24, #DC2626); /* Card top accent strip */
+  --gradient-progress: linear-gradient(90deg, #1E3A8A, #FBBF24); /* Progress bar fill */
+  --gradient-progress-critical: linear-gradient(90deg, transparent, #DC2626); /* Critical threshold overlay */
+  --gradient-timer: conic-gradient(#1E3A8A, #FBBF24, #DC2626); /* Timer ring */
+  --gradient-highlight: linear-gradient(135deg, #FBBF24, #DC2626); /* Highlight gradient */
+  
+  /* Ambient Background Gradients - Subtle, everywhere */
+  --gradient-ambient: radial-gradient(circle at top right, rgba(251,191,36,0.18), transparent 65%),
+                       radial-gradient(circle at bottom left, rgba(220,38,38,0.16), transparent 70%);
+  --gradient-radial-glow: radial-gradient(circle, rgba(251,191,36,0.18), transparent 75%); /* Legacy support */
+  
+  /* Typography */
+  --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: 'Poppins', 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-glow: 0 0 20px rgba(31, 58, 95, 0.3); /* Blue glow for trust elements */
+  --shadow-yellow-glow: 0 0 20px rgba(244, 196, 48, 0.3); /* Yellow glow for highlights */
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e0e7ff; /* Lighter blue-tinted white for headings */
+  --text-secondary: #9ca3af; /* Lighter slate for body text in dark mode */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  /* Colors remain consistent but may need slight adjustments for contrast */
+  --primary: #3B5A7F; /* Slightly lighter blue for dark mode visibility */
+  --secondary: #6B7280; /* Lighter slate for dark mode */
+  /* Dark mode gradients - darker, more muted */
+  --gradient-hero: linear-gradient(135deg, #2d3a4f, #1a1a2e); /* Darker hero gradient */
+  --gradient-header: linear-gradient(135deg, #2d3a4f, #1a1a2e); /* Darker header gradient */
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  background-image: var(--gradient-ambient); /* Ambient background gradients */
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-base);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 2px solid var(--accent-red); /* Red border */
+  border-radius: var(--radius-md);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-base);
+  background: var(--gradient-button); /* Blue to Yellow gradient */
+  color: white !important; /* White text for visibility on any background */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons with white backgrounds should use primary color text */
+.btn[style*="background: white"],
+.btn[style*="background:white"] {
+  color: var(--primary) !important;
+}
+
+[data-theme="dark"] .btn[style*="background: white"],
+[data-theme="dark"] .btn[style*="background:white"] {
+  color: var(--primary) !important;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.35); /* Yellow glow on hover */
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--gradient-button); /* Blue to Yellow gradient */
+  border: 2px solid var(--accent-red); /* Red border */
+  color: white !important; /* White text for visibility */
+}
+
+.btn-secondary {
+  background: var(--support-indigo);
+  border: 2px solid var(--accent-red);
+  color: white !important; /* White text for visibility */
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white !important; /* White text when filled */
+}
+
+/* Dark Mode Button Text - Ensure visibility */
+[data-theme="dark"] .btn,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .btn-outline:hover {
+  color: white !important; /* Always white text in dark mode for clarity */
+}
+
+/* Cards */
+.card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-md);
+}
+
+/* Neomorphism Effect */
+.neomorphic {
+  background: #f8f9fa;
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.1),
+    -8px -8px 16px rgba(255, 255, 255, 0.9);
+}
+
+.neomorphic:hover {
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.1),
+    -4px -4px 8px rgba(255, 255, 255, 0.9);
+}
+
+/* Section Spacing */
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Grid Layouts */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+/* Spacing Utilities */
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+
+.p-1 { padding: var(--spacing-xs); }
+.p-2 { padding: var(--spacing-sm); }
+.p-3 { padding: var(--spacing-md); }
+.p-4 { padding: var(--spacing-lg); }
+
+/* Text Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(31, 58, 95, 0.2);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Badge - Question Number Badge Style */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--accent-yellow); /* Yellow background */
+  border: 2px solid var(--accent-red); /* Red border */
+  color: var(--primary); /* Blue text */
+}
+
+/* Error styles - Red for critical states only */
+.error-message,
+.form-error {
+  color: var(--accent-red);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  display: block;
+}
+
+/* Highlight styles - Yellow for attention & guidance */
+.highlight,
+.progress-indicator,
+.tooltip {
+  background: var(--gradient-highlight);
+  color: var(--text-primary);
+}
+
+.focus-indicator:focus {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 2px;
+}
+
+/* Progress Bar / Exam Status */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--secondary); /* Graphite progress track */
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-progress); /* Blue to Yellow gradient */
+  border-radius: var(--radius-sm);
+  transition: width 0.3s ease;
+}
+
+.progress-fill.critical::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-progress-critical); /* Red overlay for critical threshold */
+  opacity: 0.7;
+}
+
+/* Timer Component */
+.timer-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--gradient-timer); /* Conic gradient - Blue to Yellow to Red */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-ring::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: var(--secondary); /* Graphite center */
+  border-radius: 50%;
+}
+
+/* Utilities */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+
+
+
+

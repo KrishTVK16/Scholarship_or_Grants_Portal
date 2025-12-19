@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact ScholarHub - We're here to help">
+    <title>Contact Us - ScholarHub</title>
+    <link rel="icon" href="logo10.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Completely Unique Contact Page - No Regular Patterns */
+        
+        /* Global Overflow Prevention */
+        body {
+            overflow-x: hidden;
+        }
+        
+        .section {
+            overflow-x: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Diagonal Split Hero */
+        .contact-hero-diagonal {
+            min-height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+        
+        .contact-hero-diagonal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hero);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            z-index: 0;
+            transition: background 0.5s ease;
+        }
+        
+        .hero-content-diagonal {
+            position: relative;
+            z-index: 2;
+            padding: var(--spacing-xl) 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-title-diagonal {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .hero-subtitle-diagonal {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        /* Form with Floating Labels */
+        .contact-form-floating {
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: 0;
+            border-top: 6px solid var(--primary);
+            border-right: 6px solid var(--accent-yellow);
+            border-bottom: 6px solid var(--accent-red);
+            border-left: 6px solid var(--primary);
+            position: relative;
+            transform: rotate(-1deg);
+            transition: transform 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .contact-form-floating:hover {
+            transform: rotate(0deg) scale(1.01);
+        }
+        
+        .form-group-floating {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-input-floating {
+            width: 100%;
+            padding: 18px 16px 8px 16px;
+            border: 2px solid var(--secondary);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-input-floating:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--bg-secondary);
+            box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+        }
+        
+        .form-label-floating {
+            position: absolute;
+            left: 16px;
+            top: 18px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background: var(--bg-primary);
+            padding: 0 4px;
+        }
+        
+        .form-input-floating:focus + .form-label-floating,
+        .form-input-floating:not(:placeholder-shown) + .form-label-floating {
+            top: -10px;
+            font-size: 0.75rem;
+            color: var(--primary);
+            background: var(--bg-secondary);
+        }
+        
+        .form-textarea-floating {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Contact Info - Rectangular/Square Boxes */
+        .contact-info-circular {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            overflow: visible;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .contact-circle-card {
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: var(--spacing-md);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            max-width: 100%;
+            overflow: visible;
+            box-sizing: border-box;
+            background: var(--bg-secondary);
+            height: auto;
+            min-height: auto;
+        }
+        
+        /* Add extra padding for cards with social icons to prevent overflow */
+        .contact-circle-card:nth-child(4) {
+            padding-bottom: calc(var(--spacing-md) + 15px);
+        }
+        
+        .contact-circle-card:nth-child(1) {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(30, 58, 138, 0.05));
+            border-color: var(--primary);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .contact-circle-card:nth-child(2) {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+            border-color: var(--accent-yellow);
+            border-left: 5px solid var(--accent-yellow);
+        }
+        
+        .contact-circle-card:nth-child(3) {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.05));
+            border-color: var(--accent-red);
+            border-left: 5px solid var(--accent-red);
+        }
+        
+        .contact-circle-card:nth-child(4) {
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.1), rgba(55, 65, 81, 0.05));
+            border-color: var(--secondary);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .contact-circle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+        
+        .contact-icon-large {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+            flex-shrink: 0;
+            max-width: 100%;
+        }
+        
+        .contact-circle-title {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+            white-space: nowrap;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .contact-circle-text {
+            font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            white-space: pre-line;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+        
+        /* Special styling for social icons container to prevent overflow */
+        .contact-circle-text .social-wave {
+            padding: 10px 0 15px 0;
+            margin-bottom: 0;
+        }
+        
+        /* Prevent wrapping for time/date text */
+        .contact-circle-text span {
+            white-space: nowrap;
+            display: block;
+        }
+        
+        .contact-circle-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+            display: block;
+            max-width: 100%;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Allow wrapping only for very long email addresses/links if absolutely necessary */
+        .contact-circle-link[href^="mailto:"] {
+            white-space: normal;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+        }
+        
+        .contact-circle-link[href^="tel:"] {
+            white-space: nowrap;
+        }
+        
+        .contact-circle-link:hover {
+            color: var(--accent-yellow);
+        }
+        
+        .contact-info-wrapper {
+            overflow: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .contact-info-wrapper h2 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Social Icons - Wave Layout */
+        .social-wave {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+            flex-wrap: wrap;
+            overflow: visible;
+            width: 100%;
+            max-width: 100%;
+            padding: 10px 5px;
+            box-sizing: border-box;
+        }
+        
+        .social-wave-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            margin: 5px;
+        }
+        
+        .social-wave-item:nth-child(1) {
+            transform: translateY(0);
+            animation: wave 3s ease-in-out infinite;
+        }
+        
+        .social-wave-item:nth-child(2) {
+            transform: translateY(5px);
+            animation: wave 3s ease-in-out infinite 0.2s;
+        }
+        
+        .social-wave-item:nth-child(3) {
+            transform: translateY(0);
+            animation: wave 3s ease-in-out infinite 0.4s;
+        }
+        
+        .social-wave-item:nth-child(4) {
+            transform: translateY(5px);
+            animation: wave 3s ease-in-out infinite 0.6s;
+        }
+        
+        .social-wave-item:hover {
+            transform: translateY(-8px) scale(1.15);
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            animation: none;
+            z-index: 5;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .social-wave-item svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        
+        /* FAQ - Accordion with Unique Design */
+        .faq-unique {
+            margin-top: var(--spacing-xl);
+        }
+        
+        .faq-item-unique {
+            background: var(--bg-secondary);
+            margin-bottom: var(--spacing-md);
+            border-radius: 0;
+            border-left: 6px solid var(--primary);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .faq-item-unique:nth-child(even) {
+            border-left-color: var(--accent-yellow);
+        }
+        
+        .faq-item-unique:nth-child(3n) {
+            border-left-color: var(--accent-red);
+        }
+        
+        .faq-item-unique:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question-unique {
+            padding: var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+        }
+        
+        .faq-icon-unique {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.4s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-item-unique.active .faq-icon-unique {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer-unique {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 var(--spacing-lg);
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .faq-item-unique.active .faq-answer-unique {
+            max-height: 500px;
+            padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+        }
+        
+        /* Two Column Layout - 58/38 Split */
+        .contact-layout-asymmetric {
+            display: grid;
+            grid-template-columns: 58% 38%;
+            gap: 4%;
+            margin-bottom: var(--spacing-xl);
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .contact-layout-asymmetric {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-circular {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-sm);
+            }
+            
+            .hero-content-diagonal {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+        @media (max-width: 820px) {
+            .contact-hero-diagonal {
+                min-height: 50vh;
+            }
+            
+            .contact-hero-diagonal::before {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 90%);
+            }
+            
+            .hero-content-diagonal {
+                max-width: 100%;
+                margin: 0;
+                padding: var(--spacing-lg);
+                text-align: center;
+            }
+            
+            .contact-form-floating {
+                transform: none;
+                padding: var(--spacing-lg);
+            }
+            
+            .contact-form-floating:hover {
+                transform: scale(1.01);
+            }
+            
+            .contact-info-circular {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .contact-info-circular {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .contact-circle-card {
+                border-radius: var(--radius-md);
+                padding: var(--spacing-md);
+                max-width: 100%;
+                height: auto;
+                min-height: auto;
+            }
+            
+            .contact-circle-card:nth-child(4) {
+                padding-bottom: calc(var(--spacing-md) + 12px);
+            }
+            
+            .contact-icon-large {
+                font-size: 1.75rem;
+            }
+            
+            .contact-circle-title {
+                font-size: 0.9rem;
+            }
+            
+            .contact-circle-text {
+                font-size: 0.8rem;
+            }
+            
+            .social-wave {
+                gap: var(--spacing-xs);
+                padding: 8px 3px 15px 3px;
+            }
+            
+            .social-wave-item {
+                width: 35px;
+                height: 35px;
+                margin: 3px;
+            }
+            
+            .social-wave-item svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .contact-circle-text .social-wave {
+                padding: 8px 0 15px 0;
+            }
+            
+            .faq-question-unique {
+                padding: var(--spacing-md);
+                font-size: 1rem;
+            }
+            
+            .faq-answer-unique {
+                padding: 0 var(--spacing-md);
+            }
+            
+            .faq-item-unique.active .faq-answer-unique {
+                padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="logo10.png" alt="ScholarHub Logo" class="logo-img">
+                <span>ScholarHub</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item-dropdown">
+                    <a href="index.html" class="nav-link has-dropdown">Home</a>
+                    <ul class="nav-dropdown">
+                        <li><a href="index.html" class="nav-dropdown-link">Overview</a></li>
+                        <li><a href="home-two.html" class="nav-dropdown-link">Featured</a></li>
+                    </ul>
+                </li>
+                <li><a href="scholarships.html" class="nav-link">Scholarships</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary">Sign Up</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Diagonal Hero Section -->
+    <section class="contact-hero-diagonal">
+        <div class="container">
+            <div class="hero-content-diagonal">
+                <h1 class="hero-title-diagonal">Get in Touch</h1>
+                <p class="hero-subtitle-diagonal">We're here to help you on your scholarship journey. Reach out to us anytime!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content - Asymmetric Layout -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-layout-asymmetric">
+                <!-- Contact Form -->
+                <div class="contact-form-floating">
+                    <h2 style="font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: var(--spacing-lg); color: var(--text-primary); text-align: center;">Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group-floating">
+                            <input type="text" class="form-input-floating" placeholder=" " required>
+                            <label class="form-label-floating">Your Name</label>
+                        </div>
+                        <div class="form-group-floating">
+                            <input type="email" class="form-input-floating" placeholder=" " required>
+                            <label class="form-label-floating">Email Address</label>
+                        </div>
+                        <div class="form-group-floating">
+                            <input type="text" class="form-input-floating" placeholder=" " required>
+                            <label class="form-label-floating">Subject</label>
+                        </div>
+                        <div class="form-group-floating">
+                            <textarea class="form-input-floating form-textarea-floating" placeholder=" " required></textarea>
+                            <label class="form-label-floating">Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info - Circular Cards -->
+                <div class="contact-info-wrapper">
+                    <h2 class="section-title" style="text-align: center; margin-bottom: var(--spacing-lg); font-size: clamp(1.2rem, 3vw, 1.5rem);">Contact Information</h2>
+                    <div class="contact-info-circular">
+                        <div class="contact-circle-card">
+                            <div class="contact-icon-large">📧</div>
+                            <div class="contact-circle-title">Email Us</div>
+                            <div class="contact-circle-text">
+                                <a href="mailto:info@scholarhub.com" class="contact-circle-link">info@scholarhub.com</a><br>
+                                <a href="mailto:support@scholarhub.com" class="contact-circle-link">support@scholarhub.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-circle-card">
+                            <div class="contact-icon-large">📞</div>
+                            <div class="contact-circle-title">Call Us</div>
+                            <div class="contact-circle-text">
+                                <a href="tel:+15551234567" class="contact-circle-link">+1 (555) 123-4567</a><br>
+                                <span style="font-size: clamp(0.65rem, 1.5vw, 0.75rem); white-space: nowrap; display: block;">Mon-Fri, 9 AM - 6 PM EST</span>
+                            </div>
+                        </div>
+                        <div class="contact-circle-card">
+                            <div class="contact-icon-large">📍</div>
+                            <div class="contact-circle-title">Visit Us</div>
+                            <div class="contact-circle-text">
+                                123 Education Street<br>
+                                Learning City, LC 12345<br>
+                                United States
+                            </div>
+                        </div>
+                        <div class="contact-circle-card">
+                            <div class="contact-icon-large">🌐</div>
+                            <div class="contact-circle-title">Follow Us</div>
+                            <div class="contact-circle-text" style="margin-top: var(--spacing-sm);">
+                                <div class="social-wave">
+                                    <a href="#" class="social-wave-item facebook" aria-label="Facebook" target="_blank">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-wave-item twitter" aria-label="Twitter" target="_blank">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-wave-item instagram" aria-label="Instagram" target="_blank">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-wave-item linkedin" aria-label="LinkedIn" target="_blank">
+                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section - Unique Design -->
+            <div class="faq-unique">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-item-unique">
+                    <div class="faq-question-unique">
+                        <span>How do I apply for a scholarship?</span>
+                        <span class="faq-icon-unique">▼</span>
+                    </div>
+                    <div class="faq-answer-unique">
+                        <p>To apply for a scholarship, first create an account on ScholarHub. Then browse available scholarships, find ones that match your profile, and click "Apply Now" on the scholarship detail page. Follow the application instructions provided by each scholarship provider.</p>
+                    </div>
+                </div>
+                <div class="faq-item-unique">
+                    <div class="faq-question-unique">
+                        <span>Is ScholarHub free to use?</span>
+                        <span class="faq-icon-unique">▼</span>
+                    </div>
+                    <div class="faq-answer-unique">
+                        <p>Yes! ScholarHub is completely free for students. There are no hidden fees, and you can browse, search, and apply for scholarships at no cost. We make money through partnerships with educational institutions and scholarship providers.</p>
+                    </div>
+                </div>
+                <div class="faq-item-unique">
+                    <div class="faq-question-unique">
+                        <span>How do I know if a scholarship is legitimate?</span>
+                        <span class="faq-icon-unique">▼</span>
+                    </div>
+                    <div class="faq-answer-unique">
+                        <p>All scholarships on ScholarHub are verified by our team before being listed. We check for legitimacy, current deadlines, and proper contact information. However, always be cautious of any scholarship that asks for payment or sensitive financial information.</p>
+                    </div>
+                </div>
+                <div class="faq-item-unique">
+                    <div class="faq-question-unique">
+                        <span>Can international students apply?</span>
+                        <span class="faq-icon-unique">▼</span>
+                    </div>
+                    <div class="faq-answer-unique">
+                        <p>Yes! Many scholarships on our platform are open to international students. Use our filters to search specifically for international student scholarships. Make sure to check each scholarship's eligibility requirements.</p>
+                    </div>
+                </div>
+                <div class="faq-item-unique">
+                    <div class="faq-question-unique">
+                        <span>How often are new scholarships added?</span>
+                        <span class="faq-icon-unique">▼</span>
+                    </div>
+                    <div class="faq-answer-unique">
+                        <p>We add new scholarships daily. Our team continuously searches for new opportunities and updates existing listings. We recommend checking back regularly or setting up email notifications for new matches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="footer-logo-img" style="font-size: 1.2rem;">🎓💰</div>
+                        <span>ScholarHub</span>
+                    </div>
+                    <p>Your trusted partner in finding the perfect scholarship and grant opportunities. We connect students with financial aid resources worldwide.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook" aria-label="Facebook" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon twitter" aria-label="Twitter" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon instagram" aria-label="Instagram" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon linkedin" aria-label="LinkedIn" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="scholarships.html">Browse Scholarships</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📧 info@scholarhub.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 123 Education Street, Learning City, LC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ScholarHub. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item-unique').forEach(item => {
+            item.addEventListener('click', function() {
+                const isActive = this.classList.contains('active');
+                document.querySelectorAll('.faq-item-unique').forEach(faq => faq.classList.remove('active'));
+                if (!isActive) {
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
