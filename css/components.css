@@ -120,7 +120,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--secondary);
+  background: var(--bg-secondary); /* Use secondary background for better contrast in bright mode */
   min-width: 200px;
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-md);
@@ -132,6 +132,7 @@
   transition: var(--transition-base);
   z-index: 1000;
   margin-top: var(--spacing-xs);
+  border: 1px solid rgba(30, 58, 138, 0.1); /* Subtle border for definition */
 }
 
 .nav-item-dropdown.active .nav-dropdown {
@@ -150,6 +151,11 @@
   border-radius: 0;
 }
 
+/* Ensure text is visible in bright mode - use primary blue color */
+.nav-dropdown-link {
+  color: var(--primary) !important;
+}
+
 .nav-dropdown-link:hover {
   background: rgba(30, 58, 138, 0.1);
   color: var(--primary) !important;
@@ -159,6 +165,10 @@
 /* Ensure text is visible in light mode */
 .nav-dropdown-link:hover {
   color: #1E3A8A !important;
+}
+
+[data-theme="dark"] .nav-dropdown-link {
+  color: var(--text-primary) !important;
 }
 
 [data-theme="dark"] .nav-dropdown-link:hover {

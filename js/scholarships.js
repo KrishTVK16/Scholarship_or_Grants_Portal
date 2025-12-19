@@ -12,7 +12,7 @@ const scholarshipsData = [
     deadline: '2024-12-31',
     category: 'Merit-Based',
     level: 'Undergraduate',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400'
+    image: 'assets/img/merit-based-excellence.png'
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const scholarshipsData = [
     deadline: '2024-11-30',
     category: 'STEM',
     level: 'Graduate',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400'
+    image: 'assets/img/stem-innovation-grant.png'
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const scholarshipsData = [
     deadline: '2024-12-15',
     category: 'Community',
     level: 'Undergraduate',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400'
+    image: 'assets/img/community-service-award.png'
   },
   {
     id: 4,

@@ -365,38 +365,223 @@
         }
         
         .story-timeline-horizontal {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-lg);
             padding: var(--spacing-xl) 0;
             position: relative;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scrollbar-width: thin;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        .story-timeline-horizontal::before {
+        /* Reverse S Shape Layout - Match Image Pattern */
+        /* Vertical Column Alignment: 
+           Col 1: 2018, 2023, 2024
+           Col 2: 2019, 2022, 2025
+           Col 3: 2020, 2021, 2026
+        */
+        
+        /* Row 1: 2018, 2019, 2020 (left to right) */
+        .story-timeline-horizontal .story-moment:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(3) {
+            grid-column: 3;
+            grid-row: 1;
+        }
+        
+        /* Row 2: 2023, 2022, 2021 (right to left - REVERSED) */
+        /* Note: 2023 is in col 1, 2022 in col 2, 2021 in col 3 */
+        .story-timeline-horizontal .story-moment:nth-child(4) {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(5) {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(6) {
+            grid-column: 3;
+            grid-row: 2;
+        }
+        
+        /* Row 3: 2024, 2025, 2026 (left to right) */
+        .story-timeline-horizontal .story-moment:nth-child(7) {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(8) {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(9) {
+            grid-column: 3;
+            grid-row: 3;
+        }
+        
+        /* 2026 Upcoming - Special styling */
+        .story-timeline-horizontal .story-moment.upcoming {
+            border: 3px dashed var(--accent-yellow);
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+        }
+        
+        .story-timeline-horizontal .story-moment.upcoming .story-year {
+            color: var(--accent-yellow);
+            position: relative;
+        }
+        
+        .story-timeline-horizontal .story-moment.upcoming .story-year::after {
+            content: ' (Upcoming)';
+            font-size: 0.6em;
+            font-weight: 400;
+            color: var(--accent-red);
+        }
+        
+        /* Connecting Lines - Reverse S Pattern (Straight Vertical Connections) */
+        
+        /* Horizontal line Row 1: 2018 → 2019 → 2020 */
+        .story-timeline-horizontal .story-moment:nth-child(1)::after {
             content: '';
             position: absolute;
             top: 50%;
-            left: 0;
-            right: 0;
+            left: 100%;
+            width: var(--spacing-lg);
             height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--accent-yellow), var(--accent-red));
+            background: var(--accent-red);
             transform: translateY(-50%);
-            z-index: 0;
+            z-index: 1;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(2)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: var(--spacing-lg);
+            height: 4px;
+            background: var(--accent-red);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        /* Vertical connector: 2020 (col 3, row 1) → 2021 (col 3, row 2) - Straight down */
+        .story-timeline-horizontal .story-moment:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 4px;
+            height: calc(var(--spacing-lg) + 180px);
+            background: var(--accent-red);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        /* Horizontal line Row 2 (reversed): 2021 → 2022 → 2023 */
+        .story-timeline-horizontal .story-moment:nth-child(6)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: var(--spacing-lg);
+            height: 4px;
+            background: var(--accent-red);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(5)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: var(--spacing-lg);
+            height: 4px;
+            background: var(--accent-red);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        /* Vertical connector: 2023 (col 1, row 2) → 2024 (col 1, row 3) - Straight down */
+        .story-timeline-horizontal .story-moment:nth-child(4)::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 4px;
+            height: calc(var(--spacing-lg) + 180px);
+            background: var(--accent-red);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        /* Horizontal line Row 3: 2024 → 2025 → 2026 */
+        .story-timeline-horizontal .story-moment:nth-child(7)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: var(--spacing-lg);
+            height: 4px;
+            background: var(--accent-red);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .story-timeline-horizontal .story-moment:nth-child(8)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: var(--spacing-lg);
+            height: 4px;
+            background: var(--accent-red);
+            transform: translateY(-50%);
+            z-index: 1;
         }
         
         .story-moment {
-            flex: 0 0 280px;
-            min-width: 280px;
             background: var(--bg-secondary);
             padding: var(--spacing-lg);
             border-radius: var(--radius-lg);
             position: relative;
-            z-index: 1;
+            z-index: 2;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.4s ease;
             box-sizing: border-box;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 3px solid var(--text-primary);
+            overflow: visible;
+        }
+        
+        .story-moment.upcoming {
+            z-index: 3;
+        }
+        
+        /* Hide connecting lines on last card (2026) */
+        .story-timeline-horizontal .story-moment:nth-child(9)::after {
+            display: none;
+        }
+        
+        /* Hide connecting lines on mobile */
+        @media (max-width: 820px) {
+            .story-timeline-horizontal .story-moment::after {
+                display: none;
+            }
         }
         
         .story-moment:hover {
@@ -727,15 +912,17 @@
             }
             
             .story-timeline-horizontal {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
             }
             
-            .story-timeline-horizontal::before {
-                display: none;
+            /* Reset grid column positions on mobile */
+            .story-timeline-horizontal .story-moment {
+                grid-column: 1 !important;
             }
             
-            .story-moment {
-                flex: 1;
+            .story-timeline-horizontal .story-moment.upcoming {
+                grid-column: 1 !important;
             }
             
             .testimonial-stack {
@@ -774,8 +961,8 @@
             }
             
             .story-moment {
-                flex: 1;
                 min-width: auto;
+                min-height: auto;
             }
             
             .cta-content-unique {
@@ -866,66 +1053,66 @@
             <h2 class="section-title">Our Journey</h2>
             <div class="zigzag-item">
                 <div class="zigzag-content">
-                    <h3 class="zigzag-title">2020 - The Beginning</h3>
+                    <h3 class="zigzag-title">2018 - The Beginning</h3>
                     <p class="zigzag-text">ScholarHub was founded with a simple yet powerful mission: to make scholarship discovery accessible to every student, regardless of their background or circumstances.</p>
                 </div>
-                <div class="zigzag-visual" data-title="2020 - The Beginning" data-text="ScholarHub was founded with a simple yet powerful mission: to make scholarship discovery accessible to every student, regardless of their background or circumstances.">
+                <div class="zigzag-visual" data-title="2018 - The Beginning" data-text="ScholarHub was founded with a simple yet powerful mission: to make scholarship discovery accessible to every student, regardless of their background or circumstances.">
                     <span class="zigzag-visual-emoji">🚀</span>
                     <div class="zigzag-visual-text">
-                        <h3 class="zigzag-title">2020 - The Beginning</h3>
+                        <h3 class="zigzag-title">2018 - The Beginning</h3>
                         <p class="zigzag-text">ScholarHub was founded with a simple yet powerful mission: to make scholarship discovery accessible to every student, regardless of their background or circumstances.</p>
                     </div>
                 </div>
             </div>
             <div class="zigzag-item">
                 <div class="zigzag-content">
-                    <h3 class="zigzag-title">2021 - First Milestone</h3>
-                    <p class="zigzag-text">We reached our first milestone of helping 1,000 students find scholarships and began expanding our platform capabilities.</p>
+                    <h3 class="zigzag-title">2019 - Platform Launch</h3>
+                    <p class="zigzag-text">Launched our platform with initial 500 scholarship listings and reached our first 1,000 users milestone.</p>
                 </div>
-                <div class="zigzag-visual" data-title="2021 - First Milestone" data-text="We reached our first milestone of helping 1,000 students find scholarships and began expanding our platform capabilities.">
+                <div class="zigzag-visual" data-title="2019 - Platform Launch" data-text="Launched our platform with initial 500 scholarship listings and reached our first 1,000 users milestone.">
                     <span class="zigzag-visual-emoji">📈</span>
                     <div class="zigzag-visual-text">
-                        <h3 class="zigzag-title">2021 - First Milestone</h3>
-                        <p class="zigzag-text">We reached our first milestone of helping 1,000 students find scholarships and began expanding our platform capabilities.</p>
+                        <h3 class="zigzag-title">2019 - Platform Launch</h3>
+                        <p class="zigzag-text">Launched our platform with initial 500 scholarship listings and reached our first 1,000 users milestone.</p>
                     </div>
                 </div>
             </div>
             <div class="zigzag-item">
                 <div class="zigzag-content">
-                    <h3 class="zigzag-title">2022 - Global Reach</h3>
-                    <p class="zigzag-text">Expanded our platform to serve students in 25 countries worldwide, breaking down geographical barriers to education.</p>
+                    <h3 class="zigzag-title">2020 - First Milestone</h3>
+                    <p class="zigzag-text">Reached first 1,000 students milestone and began expanding our platform capabilities with new features.</p>
                 </div>
-                <div class="zigzag-visual" data-title="2022 - Global Reach" data-text="Expanded our platform to serve students in 25 countries worldwide, breaking down geographical barriers to education.">
+                <div class="zigzag-visual" data-title="2020 - First Milestone" data-text="Reached first 1,000 students milestone and began expanding our platform capabilities with new features.">
                     <span class="zigzag-visual-emoji">🌍</span>
                     <div class="zigzag-visual-text">
-                        <h3 class="zigzag-title">2022 - Global Reach</h3>
-                        <p class="zigzag-text">Expanded our platform to serve students in 25 countries worldwide, breaking down geographical barriers to education.</p>
+                        <h3 class="zigzag-title">2020 - First Milestone</h3>
+                        <p class="zigzag-text">Reached first 1,000 students milestone and began expanding our platform capabilities with new features.</p>
                     </div>
                 </div>
             </div>
             <div class="zigzag-item">
                 <div class="zigzag-content">
-                    <h3 class="zigzag-title">2023 - Scale & Growth</h3>
-                    <p class="zigzag-text">Curated and verified over 10,000 scholarship opportunities across various categories, becoming a comprehensive resource.</p>
+                    <h3 class="zigzag-title">2021 - Innovation</h3>
+                    <p class="zigzag-text">Introduced AI-powered scholarship matching system and expanded globally to serve students worldwide.</p>
                 </div>
-                <div class="zigzag-visual" data-title="2023 - Scale & Growth" data-text="Curated and verified over 10,000 scholarship opportunities across various categories, becoming a comprehensive resource.">
+                <div class="zigzag-visual" data-title="2021 - Innovation" data-text="Introduced AI-powered scholarship matching system and expanded globally to serve students worldwide.">
                     <span class="zigzag-visual-emoji">⭐</span>
                     <div class="zigzag-visual-text">
-                        <h3 class="zigzag-title">2023 - Scale & Growth</h3>
-                        <p class="zigzag-text">Curated and verified over 10,000 scholarship opportunities across various categories, becoming a comprehensive resource.</p>
+                        <h3 class="zigzag-title">2021 - Innovation</h3>
+                        <p class="zigzag-text">Introduced AI-powered scholarship matching system and expanded globally to serve students worldwide.</p>
                     </div>
                 </div>
             </div>
             <div class="zigzag-item">
                 <div class="zigzag-content">
-                    <h3 class="zigzag-title">2024 - Impact Milestone</h3>
-                    <p class="zigzag-text">Celebrated helping over 25,000 students find and apply for scholarships, with $100M+ in awards facilitated.</p>
+                    <h3 class="zigzag-title">2022 - Global Expansion</h3>
+                    <p class="zigzag-text">Expanded to 25 countries and curated over 5,000 scholarship opportunities, becoming a global resource.</p>
                 </div>
-                <div class="zigzag-visual" data-title="2024 - Impact Milestone" data-text="Celebrated helping over 25,000 students find and apply for scholarships, with $100M+ in awards facilitated.">
+                <div class="zigzag-visual" data-title="2022 - Global Expansion" data-text="Expanded to 25 countries and curated over 5,000 scholarship opportunities, becoming a global resource.">
                     <span class="zigzag-visual-emoji">🎯</span>
                     <div class="zigzag-visual-text">
-                        <h3 class="zigzag-title">2024 - Impact Milestone</h3>
-                        <p class="zigzag-text">Celebrated helping over 25,000 students find and apply for scholarships, with $100M+ in awards facilitated.</p>
+                        <h3 class="zigzag-title">2022 - Global Expansion</h3>
+                        <p class="zigzag-text">Expanded to 25 countries and curated over 5,000 scholarship opportunities, becoming a global resource.</p>
                     </div>
                 </div>
             </div>
@@ -970,25 +1157,44 @@
         <div class="container">
             <h2 class="section-title">Key Moments</h2>
             <div class="story-timeline-horizontal">
+                <!-- Row 1: 2018, 2019, 2020 -->
                 <div class="story-moment">
-                    <div class="story-year">2020</div>
+                    <div class="story-year">2018</div>
                     <div class="story-event">Foundation established with mission to democratize education access</div>
                 </div>
                 <div class="story-moment">
-                    <div class="story-year">2021</div>
-                    <div class="story-event">Reached first 1,000 students milestone</div>
+                    <div class="story-year">2019</div>
+                    <div class="story-event">Launched platform with initial 500 scholarship listings</div>
+                </div>
+                <div class="story-moment">
+                    <div class="story-year">2020</div>
+                    <div class="story-event">Reached first 1,000 students milestone and expanded team</div>
+                </div>
+                <!-- Row 2: 2023, 2022, 2021 (reversed - but positioned to align vertically) -->
+                <div class="story-moment">
+                    <div class="story-year">2023</div>
+                    <div class="story-event">Curated 10,000+ scholarship opportunities and helped 15,000+ students</div>
                 </div>
                 <div class="story-moment">
                     <div class="story-year">2022</div>
-                    <div class="story-event">Expanded globally to 25 countries</div>
+                    <div class="story-event">Expanded globally to 25 countries and 5,000+ scholarships</div>
                 </div>
                 <div class="story-moment">
-                    <div class="story-year">2023</div>
-                    <div class="story-event">Curated 10,000+ scholarship opportunities</div>
+                    <div class="story-year">2021</div>
+                    <div class="story-event">Introduced AI-powered scholarship matching system</div>
                 </div>
+                <!-- Row 3: 2024, 2025, 2026 -->
                 <div class="story-moment">
                     <div class="story-year">2024</div>
-                    <div class="story-event">Helped 25,000+ students with $100M+ in awards</div>
+                    <div class="story-event">Helped 25,000+ students with $100M+ in awards facilitated</div>
+                </div>
+                <div class="story-moment">
+                    <div class="story-year">2025</div>
+                    <div class="story-event">Reached 50,000+ students milestone and launched mobile app</div>
+                </div>
+                <div class="story-moment upcoming">
+                    <div class="story-year">2026</div>
+                    <div class="story-event">Expanding to 50+ countries and introducing mentorship programs</div>
                 </div>
             </div>
         </div>
@@ -1035,7 +1241,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <div class="footer-logo-img" style="font-size: 1.2rem;">🎓💰</div>
+                        <img src="logo10.png" alt="ScholarHub Logo" class="footer-logo-img">
                         <span>ScholarHub</span>
                     </div>
                     <p>Your trusted partner in finding the perfect scholarship and grant opportunities. We connect students with financial aid resources worldwide.</p>
