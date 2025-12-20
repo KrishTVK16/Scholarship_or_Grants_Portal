@@ -577,6 +577,223 @@
             display: none;
         }
         
+        /* Two-column zig-zag layout for 821px to 400px */
+        @media (max-width: 821px) and (min-width: 400px) {
+            .story-timeline-horizontal {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--spacing-md);
+                max-width: 100%;
+            }
+            
+            /* Pattern: 2018(left), 2019(right), 2020(right), 2021(left), 2022(left), 2023(right), 2024(right), 2025(left), 2026(left) */
+            
+            /* Row 1: 2018 (left), 2019 (right) */
+            .story-timeline-horizontal .story-moment:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            .story-timeline-horizontal .story-moment:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+            
+            /* Row 2: 2020 (right), 2021 (left) */
+            .story-timeline-horizontal .story-moment:nth-child(3) {
+                grid-column: 2;
+                grid-row: 2;
+            }
+            
+            .story-timeline-horizontal .story-moment:nth-child(6) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            
+            /* Row 3: 2022 (left), 2023 (right) */
+            .story-timeline-horizontal .story-moment:nth-child(5) {
+                grid-column: 1;
+                grid-row: 3;
+            }
+            
+            .story-timeline-horizontal .story-moment:nth-child(4) {
+                grid-column: 2;
+                grid-row: 3;
+            }
+            
+            /* Row 4: 2024 (right), 2025 (left) */
+            .story-timeline-horizontal .story-moment:nth-child(7) {
+                grid-column: 2;
+                grid-row: 4;
+            }
+            
+            .story-timeline-horizontal .story-moment:nth-child(8) {
+                grid-column: 1;
+                grid-row: 4;
+            }
+            
+            /* Row 5: 2026 (left) */
+            .story-timeline-horizontal .story-moment:nth-child(9) {
+                grid-column: 1;
+                grid-row: 5;
+            }
+            
+            /* Connecting lines for two-column layout */
+            /* Horizontal: 2018 -> 2019 */
+            .story-timeline-horizontal .story-moment:nth-child(1)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                width: var(--spacing-md);
+                height: 4px;
+                background: var(--accent-red);
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            
+            /* Vertical: 2019 -> 2020 */
+            .story-timeline-horizontal .story-moment:nth-child(2)::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 4px;
+                height: calc(var(--spacing-md) + 180px);
+                background: var(--accent-red);
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+            
+            /* Horizontal: 2020 -> 2021 (reversed) */
+            .story-timeline-horizontal .story-moment:nth-child(3)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 100%;
+                width: var(--spacing-md);
+                height: 4px;
+                background: var(--accent-red);
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            
+            /* Vertical: 2021 -> 2022 */
+            .story-timeline-horizontal .story-moment:nth-child(6)::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 4px;
+                height: calc(var(--spacing-md) + 180px);
+                background: var(--accent-red);
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+            
+            /* Horizontal: 2022 -> 2023 */
+            .story-timeline-horizontal .story-moment:nth-child(5)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                width: var(--spacing-md);
+                height: 4px;
+                background: var(--accent-red);
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            
+            /* Vertical: 2023 -> 2024 */
+            .story-timeline-horizontal .story-moment:nth-child(4)::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 4px;
+                height: calc(var(--spacing-md) + 180px);
+                background: var(--accent-red);
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+            
+            /* Horizontal: 2024 -> 2025 (reversed) */
+            .story-timeline-horizontal .story-moment:nth-child(7)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 100%;
+                width: var(--spacing-md);
+                height: 4px;
+                background: var(--accent-red);
+                transform: translateY(-50%);
+                z-index: 1;
+            }
+            
+            /* Vertical: 2025 -> 2026 */
+            .story-timeline-horizontal .story-moment:nth-child(8)::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 4px;
+                height: calc(var(--spacing-md) + 180px);
+                background: var(--accent-red);
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+            
+            /* Hide line on last item (2026) */
+            .story-timeline-horizontal .story-moment:nth-child(9)::after {
+                display: none;
+            }
+        }
+        
+        /* Single column layout for values section (500px and below) */
+        @media (max-width: 500px) {
+            .values-circle-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: var(--spacing-md);
+                max-width: 100%;
+                aspect-ratio: auto;
+                padding: var(--spacing-md);
+                position: relative;
+            }
+            
+            .value-item-circle {
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: 140px;
+                max-width: 300px;
+                margin: 0 auto;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                transform: none;
+                border-radius: var(--radius-lg);
+            }
+            
+            .value-item-circle:nth-child(1),
+            .value-item-circle:nth-child(2),
+            .value-item-circle:nth-child(3),
+            .value-item-circle:nth-child(4),
+            .value-item-circle:nth-child(5),
+            .value-item-circle:nth-child(6) {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                transform: none;
+            }
+            
+            .value-item-circle:hover {
+                transform: translateY(-5px);
+            }
+        }
+        
         /* Hide connecting lines on mobile */
         @media (max-width: 820px) {
             .story-timeline-horizontal .story-moment::after {
@@ -919,10 +1136,12 @@
             /* Reset grid column positions on mobile */
             .story-timeline-horizontal .story-moment {
                 grid-column: 1 !important;
+                grid-row: auto !important;
             }
             
             .story-timeline-horizontal .story-moment.upcoming {
                 grid-column: 1 !important;
+                grid-row: auto !important;
             }
             
             .testimonial-stack {

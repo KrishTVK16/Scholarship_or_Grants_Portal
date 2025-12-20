@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Dropdown Toggle on Click and Hover
   const dropdownItems = document.querySelectorAll('.nav-item-dropdown');
   let dropdownTimeout = null;
-  const isMobile = window.innerWidth <= 820; // Match mobile breakpoint
+  const isMobile = window.innerWidth <= 1100; // Match mobile breakpoint
   
   // Ensure dropdowns are hidden by default
   dropdownItems.forEach(item => {

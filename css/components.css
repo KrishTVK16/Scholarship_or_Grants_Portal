@@ -342,6 +342,11 @@
 
 .stat-label { font-size: 1rem; color: rgba(255, 255, 255, 0.9); font-weight: 500; position: relative; z-index: 2; }
 
+/* Section title in stats section - white text for visibility on dark background */
+.stats-section .section-title {
+  color: white;
+}
+
 /* Featured Scholarships */
 .featured-section {
   padding: var(--spacing-xl) 0;

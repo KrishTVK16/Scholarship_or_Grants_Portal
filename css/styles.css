@@ -173,6 +173,7 @@ img {
   background: var(--gradient-button); /* Blue to Yellow gradient */
   color: white !important; /* White text for visibility on any background */
   box-shadow: var(--shadow-sm);
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 /* Buttons with white backgrounds should use primary color text */
