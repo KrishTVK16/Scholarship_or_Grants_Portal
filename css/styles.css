@@ -219,12 +219,30 @@ img {
   color: white !important; /* White text when filled */
 }
 
+/* Filter group clear filters button - white text in all modes */
+.filter-group .btn-outline {
+  color: white !important;
+}
+
+.filter-group .btn-outline:hover {
+  color: white !important;
+}
+
 /* Dark Mode Button Text - Ensure visibility */
 [data-theme="dark"] .btn,
 [data-theme="dark"] .btn-primary,
 [data-theme="dark"] .btn-secondary,
 [data-theme="dark"] .btn-outline:hover {
   color: white !important; /* Always white text in dark mode for clarity */
+}
+
+/* Filter group button - white text in dark mode too */
+[data-theme="dark"] .filter-group .btn-outline {
+  color: white !important;
+}
+
+[data-theme="dark"] .filter-group .btn-outline:hover {
+  color: white !important;
 }
 
 /* Cards */
