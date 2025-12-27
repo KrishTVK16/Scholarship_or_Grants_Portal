@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Optional – Advanced Combinational Models</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, Arial, sans-serif;
+    background:#f1f3f6;
+}
+h1,h2,h3{
+    margin:0 0 10px;
+}
+.section{
+    margin:30px;
+    padding:30px;
+    border-radius:14px;
+}
+.model{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:25px;
+}
+.flex{display:flex; gap:20px; flex-wrap:wrap;}
+.card{
+    background:#f5f7fa;
+    padding:16px;
+    border-radius:10px;
+    min-width:180px;
+    flex:1;
+}
+.kpi{
+    font-size:26px;
+    font-weight:700;
+}
+.sidebar-layout{
+    display:flex;
+    gap:20px;
+}
+.sidebar{
+    width:200px;
+    background:#eef1f5;
+    padding:15px;
+    border-radius:10px;
+}
+.sidebar div{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+.main{
+    flex:1;
+}
+.split{
+    display:flex;
+    gap:20px;
+}
+.panel{
+    flex:1;
+    background:#f8f9fb;
+    padding:15px;
+    border-radius:10px;
+}
+.timeline div{
+    padding:10px 0;
+    border-left:3px solid #90caf9;
+    margin-left:10px;
+    padding-left:10px;
+}
+.badge{
+    font-size:12px;
+    padding:4px 8px;
+    border-radius:6px;
+    background:#ddd;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+td,th{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+</style>
+</head>
+
+<body>
+
+<h1 style="padding:30px;">Dashboard Optional – Strong Combinational Layouts</h1>
+
+<!-- ================================================= -->
+<!-- MEDICAL LAB -->
+<!-- ================================================= -->
+<section class="section" style="background:#e3f2fd;">
+<h2>Medical Laboratory / Diagnostic</h2>
+
+<div class="model">
+<h3>Model 1 – KPI + Report Timeline</h3>
+<div class="flex">
+<div class="card"><div class="kpi">142</div>Samples Today</div>
+<div class="card"><div class="kpi">19</div>Pending</div>
+<div class="card"><div class="kpi">5</div>Critical</div>
+</div>
+<div class="timeline">
+<div>Blood Test – Generated</div>
+<div>Urine Test – Under Review</div>
+<div>CT Scan – Awaiting Doctor</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 2 – Sidebar + Test Control Panel</h3>
+<div class="sidebar-layout">
+<div class="sidebar">
+<div>Dashboard</div>
+<div>Patients</div>
+<div>Tests</div>
+<div>Reports</div>
+</div>
+<div class="main split">
+<div class="panel">
+<h4>Active Tests</h4>
+<p>CBC, Lipid, Thyroid</p>
+</div>
+<div class="panel">
+<h4>Quick Actions</h4>
+<p>Upload Report<br>Mark Critical</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 3 – Master–Detail Lab View</h3>
+<div class="split">
+<div class="panel">
+<h4>Test Queue</h4>
+<p>CBC</p><p>COVID</p><p>Liver Panel</p>
+</div>
+<div class="panel">
+<h4>Selected Test Details</h4>
+<p>Status: Processing</p>
+<p>Assigned Technician</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ================================================= -->
+<!-- SCHOLARSHIP -->
+<!-- ================================================= -->
+<section class="section" style="background:#e8f5e9;">
+<h2>Scholarship / Grants Portal</h2>
+
+<div class="model">
+<h3>Model 1 – KPI + Application Funnel</h3>
+<div class="flex">
+<div class="card">Applied<br><div class="kpi">620</div></div>
+<div class="card">Reviewed<br><div class="kpi">310</div></div>
+<div class="card">Approved<br><div class="kpi">120</div></div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 2 – Sidebar + Review Workspace</h3>
+<div class="sidebar-layout">
+<div class="sidebar">
+<div>Programs</div>
+<div>Applicants</div>
+<div>Review</div>
+</div>
+<div class="main">
+<h4>Current Applicant</h4>
+<p>Merit Score: 86%</p>
+<p>Documents Verified</p>
+</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 3 – Status Buckets + Detail Panel</h3>
+<div class="split">
+<div class="panel">Under Review (45)</div>
+<div class="panel">Approved (22)</div>
+</div>
+</div>
+</section>
+
+<!-- ================================================= -->
+<!-- DERMATOLOGY -->
+<!-- ================================================= -->
+<section class="section" style="background:#fce4ec;">
+<h2>Dermatology Clinic</h2>
+
+<div class="model">
+<h3>Model 1 – Daily KPI + Patient Flow</h3>
+<div class="flex">
+<div class="card">Appointments<br><div class="kpi">34</div></div>
+<div class="card">Procedures<br><div class="kpi">12</div></div>
+</div>
+<div class="timeline">
+<div>Check-in</div>
+<div>Consultation</div>
+<div>Treatment</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 2 – Doctor Sidebar + Schedule Panel</h3>
+<div class="sidebar-layout">
+<div class="sidebar">
+<div>Dr. Rao</div>
+<div>Dr. Meena</div>
+</div>
+<div class="main">
+<p>Next Slot: 11:30 AM</p>
+<p>Procedure: Acne Therapy</p>
+</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 3 – Treatment Management View</h3>
+<div class="split">
+<div class="panel">Active Treatments</div>
+<div class="panel">Follow-ups Due</div>
+</div>
+</div>
+</section>
+
+<!-- ================================================= -->
+<!-- DRONE SERVICES -->
+<!-- ================================================= -->
+<section class="section" style="background:#ede7f6;">
+<h2>Drone Services</h2>
+
+<div class="model">
+<h3>Model 1 – Mission KPIs + Status Board</h3>
+<div class="flex">
+<div class="card">Active<br><div class="kpi">5</div></div>
+<div class="card">Completed<br><div class="kpi">98</div></div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 2 – Sidebar + Mission Control</h3>
+<div class="sidebar-layout">
+<div class="sidebar">
+<div>Missions</div>
+<div>Drones</div>
+<div>Clients</div>
+</div>
+<div class="main">
+<p>Drone: DJI-X2</p>
+<p>Altitude: 120m</p>
+</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 3 – Asset + Project Split</h3>
+<div class="split">
+<div class="panel">Drone Fleet</div>
+<div class="panel">Ongoing Projects</div>
+</div>
+</div>
+</section>
+
+<!-- ================================================= -->
+<!-- MANUFACTURING -->
+<!-- ================================================= -->
+<section class="section" style="background:#fff3e0;">
+<h2>Manufacturing Company</h2>
+
+<div class="model">
+<h3>Model 1 – Production KPIs + Shift Status</h3>
+<div class="flex">
+<div class="card">Units<br><div class="kpi">1,420</div></div>
+<div class="card">Defects<br><div class="kpi">9</div></div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 2 – Sidebar + Inventory Control</h3>
+<div class="sidebar-layout">
+<div class="sidebar">
+<div>Production</div>
+<div>Inventory</div>
+<div>Maintenance</div>
+</div>
+<div class="main">
+<p>Steel: 540kg</p>
+<p>Plastic: 320kg</p>
+</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 3 – Machine + Output View</h3>
+<div class="split">
+<div class="panel">Machine A – Running</div>
+<div class="panel">Output Rate</div>
+</div>
+</div>
+</section>
+
+<!-- ================================================= -->
+<!-- HR -->
+<!-- ================================================= -->
+<section class="section" style="background:#e0f7fa;">
+<h2>HR Recruitment Agency</h2>
+
+<div class="model">
+<h3>Model 1 – Hiring Funnel KPIs</h3>
+<div class="flex">
+<div class="card">Applied<br><div class="kpi">320</div></div>
+<div class="card">Interviewed<br><div class="kpi">84</div></div>
+<div class="card">Hired<br><div class="kpi">19</div></div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 2 – Sidebar + Candidate Workspace</h3>
+<div class="sidebar-layout">
+<div class="sidebar">
+<div>Jobs</div>
+<div>Candidates</div>
+<div>Clients</div>
+</div>
+<div class="main">
+<p>Candidate: Rahul</p>
+<p>Status: Technical Round</p>
+</div>
+</div>
+</div>
+
+<div class="model">
+<h3>Model 3 – Role-Based Overview</h3>
+<div class="split">
+<div class="panel">Frontend Dev – 45</div>
+<div class="panel">HR Exec – 18</div>
+</div>
+</div>
+</section>
+
+</body>
+</html>

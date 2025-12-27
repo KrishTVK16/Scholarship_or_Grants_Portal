@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your ScholarHub dashboard - Track applications and find opportunities">
+    <meta name="description" content="ScholarHub Dashboard - Track your scholarship applications">
     <title>Dashboard - ScholarHub</title>
     <link rel="icon" href="logo10.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,124 +13,1013 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
     <style>
-        .dashboard-header {
+        /* Modern Dashboard Styles */
+        body {
+            background: var(--bg-primary);
+        }
+
+        /* Dashboard Header Section */
+        .dashboard-hero {
             background: var(--gradient-hero);
-            color: white;
             padding: var(--spacing-xl) 0;
-            margin-bottom: var(--spacing-lg);
-            transition: background 0.5s ease;
-        }
-        .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
             margin-bottom: var(--spacing-lg);
         }
-        .stat-card-dashboard {
+
+        .dashboard-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.2), transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dashboard-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15), transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        /* Animated Background Shapes */
+        .dashboard-hero-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hero-shape.shape-1 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 10%;
+            background: linear-gradient(135deg, var(--accent-yellow), var(--primary));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-delay: 0s;
+        }
+
+        .hero-shape.shape-2 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            right: 15%;
+            background: var(--accent-yellow);
+            border-radius: 50%;
+            animation-delay: 2s;
+        }
+
+        .hero-shape.shape-3 {
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            right: 20%;
+            background: linear-gradient(45deg, var(--primary), var(--accent-red));
+            transform: rotate(45deg);
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            33% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            66% {
+                transform: translateY(10px) translateX(-10px);
+            }
+        }
+
+        .dashboard-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+        }
+
+        .dashboard-hero-content h1 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .dashboard-hero-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* KPI + Application Funnel Section */
+        .kpi-funnel-section {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
-            padding: var(--spacing-md);
-            box-shadow: var(--shadow-sm);
-            text-align: center;
-            transition: background-color 0.3s ease;
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
         }
-        .stat-card-dashboard .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
+
+        .kpi-funnel-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-header-accent);
+        }
+
+        .section-header {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-header h2 {
+            text-align: left;
+            color: var(--text-primary);
+            font-size: 2rem;
             margin-bottom: var(--spacing-xs);
         }
-        .stat-card-dashboard .stat-label {
+
+        .section-header p {
+            text-align: left;
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-size: 1rem;
         }
+
+        /* KPI Cards Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(251, 191, 36, 0.05));
+            border: 2px solid rgba(30, 58, 138, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-button);
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        /* KPI Card Pulse Animation */
+        .kpi-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(30, 58, 138, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .kpi-card:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .kpi-card:nth-child(1) {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.08), rgba(30, 58, 138, 0.03));
+        }
+
+        .kpi-card:nth-child(2) {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(251, 191, 36, 0.03));
+        }
+
+        .kpi-card:nth-child(3) {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.03));
+        }
+
+        .kpi-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+            transition: transform 0.3s ease;
+        }
+
+        .kpi-card:hover .kpi-value {
+            transform: scale(1.1);
+        }
+
+        .kpi-card:nth-child(1) .kpi-value {
+            color: var(--primary);
+        }
+
+        .kpi-card:nth-child(2) .kpi-value {
+            color: var(--accent-yellow);
+            color: #F59E0B;
+        }
+
+        .kpi-card:nth-child(3) .kpi-value {
+            color: #10B981;
+        }
+
+        .kpi-trend {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .kpi-trend.positive {
+            color: #10B981;
+        }
+
+        /* Application Funnel Visualization */
+        .funnel-container {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 2px solid var(--secondary);
+        }
+
+        .funnel-title {
+            text-align: left;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .funnel-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .funnel-step {
+            position: relative;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+
+        .funnel-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: linear-gradient(90deg, rgba(30, 58, 138, 0.1), transparent);
+            transition: width 0.4s ease;
+        }
+
+        .funnel-step:hover {
+            transform: translateX(10px) scale(1.01);
+            box-shadow: var(--shadow-md);
+            border-left-width: 6px;
+        }
+
+        .funnel-step:hover::before {
+            width: 100%;
+        }
+
+        .funnel-step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .funnel-step-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .funnel-step-count {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .funnel-step-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin-top: var(--spacing-xs);
+        }
+
+        .funnel-step-fill {
+            height: 100%;
+            background: var(--gradient-button);
+            border-radius: var(--radius-sm);
+            transition: width 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .funnel-step-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .funnel-step:nth-child(1) .funnel-step-fill {
+            width: 100%;
+        }
+
+        .funnel-step:nth-child(2) .funnel-step-fill {
+            width: 50%;
+            background: linear-gradient(90deg, var(--primary), var(--accent-yellow));
+        }
+
+        .funnel-step:nth-child(3) .funnel-step-fill {
+            width: 19.35%;
+            background: linear-gradient(90deg, var(--primary), #10B981);
+        }
+
+        /* Additional Dashboard Content */
         .dashboard-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
         }
-        .dashboard-section {
+
+        .dashboard-widget {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
-            padding: var(--spacing-md);
+            padding: var(--spacing-lg);
             box-shadow: var(--shadow-sm);
-            margin-bottom: var(--spacing-md);
-            transition: background-color 0.3s ease;
         }
-        .dashboard-section h3 {
+
+        .dashboard-left-column,
+        .dashboard-right-column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .widget-title {
             text-align: left;
-            margin-bottom: var(--spacing-md);
             color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--secondary);
         }
+
+        /* Additional Statistics Section */
+        .dashboard-stats-section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .stats-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .stat-box {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-box:hover::before {
+            left: 100%;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(251, 191, 36, 0.1));
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        .stat-box:hover .stat-icon {
+            transform: scale(1.1) rotate(5deg);
+            animation: iconBounce 0.6s ease;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.15) rotate(10deg);
+            }
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover .stat-value {
+            transform: scale(1.1);
+        }
+
+        .stat-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Application List */
+        .application-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
         .application-item {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: linear-gradient(90deg, rgba(30, 58, 138, 0.1), transparent);
+            transition: width 0.4s ease;
+        }
+
+        .application-item:hover {
+            transform: translateX(10px) scale(1.01);
+            box-shadow: var(--shadow-md);
+            border-left-width: 6px;
+        }
+
+        .application-item:hover::before {
+            width: 100%;
+        }
+
+        .application-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: var(--spacing-sm);
-            border-bottom: 1px solid var(--secondary);
+            margin-bottom: var(--spacing-sm);
         }
-        .application-item:last-child {
-            border-bottom: none;
-        }
-        .application-info h4 {
-            text-align: left;
-            font-size: 1rem;
-            margin-bottom: var(--spacing-xs);
+
+        .application-name {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--text-primary);
-        }
-        .application-info p {
+            margin: 0;
             text-align: left;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
         }
-        .status-badge {
+
+        .application-status {
             padding: 4px 12px;
             border-radius: var(--radius-sm);
             font-size: 0.75rem;
             font-weight: 600;
+            text-transform: uppercase;
         }
-        .status-badge.pending {
+
+        .status-pending {
             background: rgba(251, 191, 36, 0.2);
-            color: var(--accent-yellow);
+            color: #F59E0B;
         }
-        [data-theme="dark"] .status-badge.pending {
-            background: rgba(251, 191, 36, 0.3);
-            color: var(--accent-yellow);
+
+        .status-approved {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10B981;
         }
-        .status-badge.approved {
-            background: rgba(30, 58, 138, 0.2);
-            color: var(--primary);
+
+        .status-reviewing {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
         }
-        [data-theme="dark"] .status-badge.approved {
-            background: rgba(30, 58, 138, 0.3);
-            color: var(--primary);
-        }
-        .status-badge.rejected {
+
+        .status-rejected {
             background: rgba(220, 38, 38, 0.2);
-            color: var(--accent-red);
+            color: #DC2626;
         }
-        [data-theme="dark"] .status-badge.rejected {
-            background: rgba(220, 38, 38, 0.3);
-            color: var(--accent-red);
-        }
-        .quick-actions {
-            list-style: none;
-        }
-        .quick-actions li {
+
+        .application-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
             margin-bottom: var(--spacing-sm);
         }
-        .quick-actions a {
-            display: block;
+
+        .detail-item {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .application-progress {
+            margin-top: var(--spacing-sm);
+        }
+
+        .progress-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .progress-bar-small {
+            width: 100%;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .progress-fill-small {
+            height: 100%;
+            background: var(--gradient-button);
+            border-radius: var(--radius-sm);
+            transition: width 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill-small::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Status Breakdown */
+        .status-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
             padding: var(--spacing-sm);
             background: var(--bg-primary);
             border-radius: var(--radius-sm);
-            transition: var(--transition-base);
-            color: var(--text-primary);
         }
-        .quick-actions a:hover {
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .status-info {
+            flex: 1;
+        }
+
+        .status-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        .status-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .status-percentage {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
             background: var(--primary);
             color: white;
+            transform: translateX(10px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
         }
+
+        .action-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .action-btn:hover .action-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Deadlines */
+        .deadline-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .deadline-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-red);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .deadline-item::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .deadline-item:hover::after {
+            opacity: 1;
+        }
+
+        .deadline-item:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: var(--shadow-md);
+            border-left-width: 5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.7;
+            }
+        }
+
+        .deadline-date {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent-yellow));
+            color: white;
+            padding: var(--spacing-xs);
+            border-radius: var(--radius-sm);
+            min-width: 60px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deadline-item:hover .deadline-date {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        .deadline-day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .deadline-month {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .deadline-info {
+            flex: 1;
+        }
+
+        .deadline-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            text-align: left;
+        }
+
+        .deadline-time {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        /* Performance Metrics */
+        .performance-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .metric-item {
+            padding: var(--spacing-sm);
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--primary);
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: left;
+        }
+
+        /* Dark Mode Adjustments */
+        [data-theme="dark"] .kpi-card {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(251, 191, 36, 0.1));
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .funnel-step {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="dark"] .stat-box {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .application-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="dark"] .status-item,
+        [data-theme="dark"] .action-btn,
+        [data-theme="dark"] .deadline-item,
+        [data-theme="dark"] .metric-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Admin Text Display (Not a Button) */
+        .admin-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-weight: 500;
+            padding: 8px 16px;
+            list-style: none;
+        }
+
+        .admin-icon {
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            color: white;
+        }
+
+        .admin-label {
+            font-size: 1rem;
+            color: white;
+        }
+
+        /* Additional Animation Effects */
+        .dashboard-widget {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .kpi-card,
+        .stat-box {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .kpi-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .kpi-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .kpi-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .kpi-card,
+        .stat-box,
+        .dashboard-widget {
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Status Indicator Animation */
+        .status-indicator {
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .application-details {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -142,18 +1031,11 @@
                 <span>ScholarHub</span>
             </a>
             <ul class="nav-menu">
-                <li class="nav-item-dropdown">
-                    <a href="index.html" class="nav-link has-dropdown">Home</a>
-                    <ul class="nav-dropdown">
-                        <li><a href="index.html" class="nav-dropdown-link">Overview</a></li>
-                        <li><a href="home-two.html" class="nav-dropdown-link">Featured</a></li>
-                    </ul>
+                <li class="admin-text">
+                    <span class="admin-icon">👤</span>
+                    <span class="admin-label">Admin</span>
                 </li>
-                <li><a href="scholarships.html" class="nav-link">Scholarships</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
-                <li><a href="login.html" class="btn btn-primary">Logout</a></li>
+                <li><a href="index.html" class="nav-link logout-btn" id="logoutBtn">Logout</a></li>
             </ul>
             <div class="navbar-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
@@ -162,199 +1044,338 @@
         </nav>
     </header>
 
-    <!-- Dashboard Header -->
-    <section class="dashboard-header">
+    <!-- Dashboard Hero Section -->
+    <section class="dashboard-hero">
+        <div class="dashboard-hero-shapes">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+        </div>
         <div class="container">
-            <h1 style="color: white; margin-bottom: var(--spacing-sm);">Welcome back, John!</h1>
-            <p style="color: rgba(255,255,255,0.9);">Track your applications and discover new opportunities</p>
+            <div class="dashboard-hero-content">
+                <h1 class="scroll-animate">ScholarHub Dashboard</h1>
+                <p class="scroll-animate">Track and manage your scholarship applications in one place</p>
+            </div>
         </div>
     </section>
 
-    <!-- Dashboard Content -->
+    <!-- Main Dashboard Content -->
     <section class="section">
         <div class="container">
-            <!-- Stats Overview -->
-            <div class="dashboard-stats">
-                <div class="stat-card-dashboard scroll-animate">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Active Applications</div>
+            <!-- KPI + Application Funnel Section -->
+            <div class="kpi-funnel-section">
+                <div class="section-header">
+                    <h2>Application Overview</h2>
+                    <p>Monitor your scholarship application journey at a glance</p>
                 </div>
-                <div class="stat-card-dashboard scroll-animate">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Saved Scholarships</div>
+
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card scroll-animate">
+                        <div class="kpi-label">Applied</div>
+                        <div class="kpi-value">620</div>
+                        <div class="kpi-trend">
+                            <span>Total applications submitted</span>
                 </div>
-                <div class="stat-card-dashboard scroll-animate">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Approved</div>
                 </div>
-                <div class="stat-card-dashboard scroll-animate">
-                    <div class="stat-number">$25,000</div>
-                    <div class="stat-label">Total Awarded</div>
+                    <div class="kpi-card scroll-animate">
+                        <div class="kpi-label">Reviewed</div>
+                        <div class="kpi-value">310</div>
+                        <div class="kpi-trend">
+                            <span>50% under review</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card scroll-animate">
+                        <div class="kpi-label">Approved</div>
+                        <div class="kpi-value">120</div>
+                        <div class="kpi-trend positive">
+                            <span>19.4% approval rate</span>
+                        </div>
                 </div>
             </div>
 
-            <!-- Main Content -->
+                <!-- Application Funnel -->
+                <div class="funnel-container">
+                    <h3 class="funnel-title">Application Funnel</h3>
+                    <div class="funnel-steps">
+                        <div class="funnel-step">
+                            <div class="funnel-step-header">
+                                <span class="funnel-step-label">Applied</span>
+                                <span class="funnel-step-count">620</span>
+                            </div>
+                            <div class="funnel-step-bar">
+                                <div class="funnel-step-fill"></div>
+                            </div>
+                        </div>
+                        <div class="funnel-step">
+                            <div class="funnel-step-header">
+                                <span class="funnel-step-label">Reviewed</span>
+                                <span class="funnel-step-count">310</span>
+                            </div>
+                            <div class="funnel-step-bar">
+                                <div class="funnel-step-fill"></div>
+                            </div>
+                        </div>
+                        <div class="funnel-step">
+                            <div class="funnel-step-header">
+                                <span class="funnel-step-label">Approved</span>
+                                <span class="funnel-step-count">120</span>
+                            </div>
+                            <div class="funnel-step-bar">
+                                <div class="funnel-step-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Statistics Section -->
+            <div class="dashboard-stats-section">
+                <div class="stats-grid-4">
+                    <div class="stat-box">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <div class="stat-value">$2.5M</div>
+                            <div class="stat-desc">Total Award Amount</div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-info">
+                            <div class="stat-value">45</div>
+                            <div class="stat-desc">Pending Reviews</div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">85%</div>
+                            <div class="stat-desc">Success Rate</div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-value">12</div>
+                            <div class="stat-desc">Deadlines This Week</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
             <div class="dashboard-content">
                 <!-- Left Column -->
-                <div>
+                <div class="dashboard-left-column">
                     <!-- Recent Applications -->
-                    <div class="dashboard-section">
-                        <h3>Recent Applications</h3>
+                    <div class="dashboard-widget">
+                        <h3 class="widget-title">Recent Applications</h3>
+                        <div class="application-list">
                         <div class="application-item">
-                            <div class="application-info">
-                                <h4>Merit-Based Excellence Scholarship</h4>
-                                <p>Applied on: October 15, 2024</p>
+                                <div class="application-header">
+                                    <h4 class="application-name">Merit-Based Excellence Scholarship</h4>
+                                    <span class="application-status status-pending">Pending</span>
                             </div>
-                            <span class="status-badge pending">Pending</span>
+                                <div class="application-details">
+                                    <span class="detail-item">📅 Applied: Oct 15, 2024</span>
+                                    <span class="detail-item">💰 Amount: $10,000</span>
+                                    <span class="detail-item">🎯 Category: Merit-Based</span>
+                                </div>
+                                <div class="application-progress">
+                                    <div class="progress-label">Application Progress: 75%</div>
+                                    <div class="progress-bar-small">
+                                        <div class="progress-fill-small" style="width: 75%;"></div>
+                                    </div>
+                                </div>
                         </div>
                         <div class="application-item">
-                            <div class="application-info">
-                                <h4>STEM Innovation Grant</h4>
-                                <p>Applied on: October 10, 2024</p>
+                                <div class="application-header">
+                                    <h4 class="application-name">STEM Innovation Grant</h4>
+                                    <span class="application-status status-approved">Approved</span>
                             </div>
-                            <span class="status-badge approved">Approved</span>
+                                <div class="application-details">
+                                    <span class="detail-item">📅 Applied: Oct 10, 2024</span>
+                                    <span class="detail-item">💰 Amount: $15,000</span>
+                                    <span class="detail-item">🎯 Category: STEM</span>
+                                </div>
+                                <div class="application-progress">
+                                    <div class="progress-label">Application Progress: 100%</div>
+                                    <div class="progress-bar-small">
+                                        <div class="progress-fill-small" style="width: 100%; background: linear-gradient(90deg, var(--primary), #10B981);"></div>
+                                    </div>
+                        </div>
                         </div>
                         <div class="application-item">
-                            <div class="application-info">
-                                <h4>Community Service Award</h4>
-                                <p>Applied on: September 28, 2024</p>
+                                <div class="application-header">
+                                    <h4 class="application-name">Community Service Award</h4>
+                                    <span class="application-status status-reviewing">Under Review</span>
                             </div>
-                            <span class="status-badge pending">Pending</span>
+                                <div class="application-details">
+                                    <span class="detail-item">📅 Applied: Sep 28, 2024</span>
+                                    <span class="detail-item">💰 Amount: $8,000</span>
+                                    <span class="detail-item">🎯 Category: Community Service</span>
+                                </div>
+                                <div class="application-progress">
+                                    <div class="progress-label">Application Progress: 60%</div>
+                                    <div class="progress-bar-small">
+                                        <div class="progress-fill-small" style="width: 60%; background: linear-gradient(90deg, var(--primary), var(--accent-yellow));"></div>
+                                    </div>
+                        </div>
+                            </div>
                         </div>
                         <div style="margin-top: var(--spacing-md); text-align: center;">
                             <a href="scholarships.html" class="btn btn-outline">View All Applications</a>
                         </div>
                     </div>
 
-                    <!-- Recommended Scholarships -->
-                    <div class="dashboard-section">
-                        <h3>Recommended for You</h3>
-                        <div class="grid grid-2">
-                            <div class="scholarship-card scroll-animate">
-                                <div class="scholarship-card-img" style="background: var(--gradient-hero);"></div>
-                                <div class="scholarship-card-body">
-                                    <h3 class="scholarship-card-title">International Student Scholarship</h3>
-                                    <p class="scholarship-card-text">Financial assistance for international students.</p>
-                                    <div class="scholarship-card-footer">
-                                        <span class="scholarship-amount">$12,000</span>
-                                        <span class="scholarship-deadline">Nov 20, 2024</span>
+                    <!-- Application Status Breakdown -->
+                    <div class="dashboard-widget">
+                        <h3 class="widget-title">Application Status Breakdown</h3>
+                        <div class="status-breakdown">
+                            <div class="status-item">
+                                <div class="status-indicator status-pending"></div>
+                                <div class="status-info">
+                                    <div class="status-name">Pending</div>
+                                    <div class="status-count">210 applications</div>
                                     </div>
-                                    <a href="scholarship-detail.html?id=4" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View Details</a>
+                                <div class="status-percentage">33.9%</div>
                                 </div>
+                            <div class="status-item">
+                                <div class="status-indicator status-reviewing"></div>
+                                <div class="status-info">
+                                    <div class="status-name">Under Review</div>
+                                    <div class="status-count">190 applications</div>
                             </div>
-                            <div class="scholarship-card scroll-animate">
-                                <div class="scholarship-card-img" style="background: linear-gradient(135deg, #E26A8D, #7C5CE6);"></div>
-                                <div class="scholarship-card-body">
-                                    <h3 class="scholarship-card-title">Arts & Humanities Fellowship</h3>
-                                    <p class="scholarship-card-text">Supporting talented students in arts programs.</p>
-                                    <div class="scholarship-card-footer">
-                                        <span class="scholarship-amount">$9,000</span>
-                                        <span class="scholarship-deadline">Dec 10, 2024</span>
+                                <div class="status-percentage">30.6%</div>
                                     </div>
-                                    <a href="scholarship-detail.html?id=5" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View Details</a>
+                            <div class="status-item">
+                                <div class="status-indicator status-approved"></div>
+                                <div class="status-info">
+                                    <div class="status-name">Approved</div>
+                                    <div class="status-count">120 applications</div>
                                 </div>
+                                <div class="status-percentage">19.4%</div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-indicator status-rejected"></div>
+                                <div class="status-info">
+                                    <div class="status-name">Rejected</div>
+                                    <div class="status-count">100 applications</div>
+                                </div>
+                                <div class="status-percentage">16.1%</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Column -->
-                <div>
+                <div class="dashboard-right-column">
                     <!-- Quick Actions -->
-                    <div class="dashboard-section">
-                        <h3>Quick Actions</h3>
-                        <ul class="quick-actions">
-                            <li><a href="scholarships.html">Browse Scholarships</a></li>
-                            <li><a href="scholarships.html">Search Scholarships</a></li>
-                            <li><a href="#">Update Profile</a></li>
-                            <li><a href="#">View Saved Scholarships</a></li>
-                            <li><a href="contact.html">Contact Support</a></li>
+                    <div class="dashboard-widget">
+                        <h3 class="widget-title">Quick Actions</h3>
+                        <ul class="quick-actions-list">
+                            <li>
+                                <a href="scholarships.html" class="action-btn">
+                                    <span class="action-icon">🔍</span>
+                                    <span>Browse Scholarships</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="scholarships.html" class="action-btn">
+                                    <span class="action-icon">📝</span>
+                                    <span>New Application</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="action-btn">
+                                    <span class="action-icon">📄</span>
+                                    <span>View Documents</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="action-btn">
+                                    <span class="action-icon">⚙️</span>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- Profile Completion -->
-                    <div class="dashboard-section">
-                        <h3>Profile Completion</h3>
-                        <div style="margin-bottom: var(--spacing-sm);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xs);">
-                                <span style="font-size: 0.875rem;">75% Complete</span>
+                    <!-- Upcoming Deadlines -->
+                    <div class="dashboard-widget">
+                        <h3 class="widget-title">Upcoming Deadlines</h3>
+                        <div class="deadline-list">
+                            <div class="deadline-item">
+                                <div class="deadline-date">
+                                    <div class="deadline-day">25</div>
+                                    <div class="deadline-month">Nov</div>
                             </div>
-                            <div style="width: 100%; height: 8px; background: var(--secondary); border-radius: 4px; overflow: hidden;">
-                                <div style="width: 75%; height: 100%; background: var(--gradient-button);"></div>
+                                <div class="deadline-info">
+                                    <div class="deadline-name">STEM Innovation Grant</div>
+                                    <div class="deadline-time">5 days remaining</div>
                             </div>
                         </div>
-                        <p style="font-size: 0.875rem; color: var(--text-secondary); text-align: left;">Complete your profile to get better scholarship matches</p>
-                        <a href="#" class="btn btn-outline" style="width: 100%; margin-top: var(--spacing-sm);">Complete Profile</a>
+                            <div class="deadline-item">
+                                <div class="deadline-date">
+                                    <div class="deadline-day">30</div>
+                                    <div class="deadline-month">Nov</div>
                     </div>
+                                <div class="deadline-info">
+                                    <div class="deadline-name">International Student Scholarship</div>
+                                    <div class="deadline-time">10 days remaining</div>
+                </div>
+            </div>
+                            <div class="deadline-item">
+                                <div class="deadline-date">
+                                    <div class="deadline-day">05</div>
+                                    <div class="deadline-month">Dec</div>
+        </div>
+                                <div class="deadline-info">
+                                    <div class="deadline-name">Arts & Humanities Fellowship</div>
+                                    <div class="deadline-time">15 days remaining</div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                    <!-- Performance Summary -->
+                    <div class="dashboard-widget">
+                        <h3 class="widget-title">Performance Summary</h3>
+                        <div class="performance-metrics">
+                            <div class="metric-item">
+                                <div class="metric-label">Average Response Time</div>
+                                <div class="metric-value">3.2 days</div>
+                </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Applications This Month</div>
+                                <div class="metric-value">45</div>
+            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Approval Rate</div>
+                                <div class="metric-value">85%</div>
+                </div>
+            </div>
+        </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="logo10.png" alt="ScholarHub Logo" class="footer-logo-img">
-                        <span>ScholarHub</span>
-                    </div>
-                    <p>Your trusted partner in finding the perfect scholarship and grant opportunities. We connect students with financial aid resources worldwide.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon facebook" aria-label="Facebook" target="_blank">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon twitter" aria-label="Twitter" target="_blank">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon instagram" aria-label="Instagram" target="_blank">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon linkedin" aria-label="LinkedIn" target="_blank">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="scholarships.html">Browse Scholarships</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <p>📧 info@scholarhub.com</p>
-                    <p>📞 +1 (555) 123-4567</p>
-                    <p>📍 123 Education Street, Learning City, LC 12345</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ScholarHub. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="terms.html">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
+    <script>
+        // Logout functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Redirect to home page
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
