@@ -5,63 +5,96 @@
 /* CSS Variables - Design System */
 :root {
   /* Core Colors - COMBINED-COLOR SYSTEM (All Colors Together) */
-  --primary: #1E3A8A; /* Blue */
-  --secondary: #374151; /* Graphite - Neutral Base */
-  --accent-yellow: #FBBF24; /* Yellow */
-  --accent-red: #DC2626; /* Red */
-  --support-indigo: #1E3A8A; /* Map indigo to blue */
-  
+  --primary: #1E3A8A;
+  /* Blue */
+  --secondary: #374151;
+  /* Graphite - Neutral Base */
+  --accent-yellow: #FBBF24;
+  /* Yellow */
+  --accent-red: #DC2626;
+  /* Red */
+
+  /* New Semantic Colors */
+  --success: #16A34A;
+  /* Emerald Green */
+  --info: #0EA5E9;
+  /* Cool Cyan */
+  --support-indigo: #1E3A8A;
+  /* Map indigo to blue */
+
+  /* Navigation Colors */
+  --nav-bg: #0F172A;
+  /* Deep Navy */
+  --nav-hover: #3B82F6;
+  /* Soft Blue */
+
   /* Legacy support (mapped to new colors) */
   --accent-purple: #1E3A8A;
   --accent-cyan: #1E3A8A;
   --accent-pink: #DC2626;
-  
+
   /* Background Colors */
   --bg-primary: #f8f9fa;
   --bg-secondary: #ffffff;
-  --text-primary: #1E3A8A; /* Use blue for headings */
-  --text-secondary: #374151; /* Use graphite for body text */
-  
+  --bg-neutral: #F1F5F9;
+  /* Soft Off-White */
+  --text-primary: #1E3A8A;
+  /* Use blue for headings */
+  --text-secondary: #374151;
+  /* Use graphite for body text */
+
   /* Combined Color Gradients - All colors together */
-  --gradient-header: linear-gradient(135deg, #1E3A8A, #374151); /* Header background */
-  --gradient-header-accent: linear-gradient(90deg, #FBBF24, #DC2626); /* Header bottom accent line */
-  --gradient-button: linear-gradient(135deg, #1E3A8A, #FBBF24); /* Primary Button - Blue to Yellow */
-  --gradient-hero: linear-gradient(135deg, #1E3A8A, #374151); /* Header / Hero Gradient */
-  --gradient-card-accent: linear-gradient(90deg, #1E3A8A, #FBBF24, #DC2626); /* Card top accent strip */
-  --gradient-progress: linear-gradient(90deg, #1E3A8A, #FBBF24); /* Progress bar fill */
-  --gradient-progress-critical: linear-gradient(90deg, transparent, #DC2626); /* Critical threshold overlay */
-  --gradient-timer: conic-gradient(#1E3A8A, #FBBF24, #DC2626); /* Timer ring */
-  --gradient-highlight: linear-gradient(135deg, #FBBF24, #DC2626); /* Highlight gradient */
-  
+  --gradient-header: linear-gradient(135deg, #1E3A8A, #374151);
+  /* Header background */
+  --gradient-header-accent: linear-gradient(90deg, #FBBF24, #DC2626);
+  /* Header bottom accent line */
+  --gradient-button: linear-gradient(135deg, #1E3A8A, #FBBF24);
+  /* Primary Button - Blue to Yellow */
+  --gradient-hero: linear-gradient(135deg, #1E3A8A, #374151);
+  /* Header / Hero Gradient */
+  --gradient-card-accent: linear-gradient(90deg, #1E3A8A, #FBBF24, #DC2626);
+  /* Card top accent strip */
+  --gradient-progress: linear-gradient(90deg, #1E3A8A, #FBBF24);
+  /* Progress bar fill */
+  --gradient-progress-critical: linear-gradient(90deg, transparent, #DC2626);
+  /* Critical threshold overlay */
+  --gradient-timer: conic-gradient(#1E3A8A, #FBBF24, #DC2626);
+  /* Timer ring */
+  --gradient-highlight: linear-gradient(135deg, #FBBF24, #DC2626);
+  /* Highlight gradient */
+
   /* Ambient Background Gradients - Subtle, everywhere */
-  --gradient-ambient: radial-gradient(circle at top right, rgba(251,191,36,0.18), transparent 65%),
-                       radial-gradient(circle at bottom left, rgba(220,38,38,0.16), transparent 70%);
-  --gradient-radial-glow: radial-gradient(circle, rgba(251,191,36,0.18), transparent 75%); /* Legacy support */
-  
+  --gradient-ambient: radial-gradient(circle at top right, rgba(251, 191, 36, 0.18), transparent 65%),
+    radial-gradient(circle at bottom left, rgba(220, 38, 38, 0.16), transparent 70%);
+  --gradient-radial-glow: radial-gradient(circle, rgba(251, 191, 36, 0.18), transparent 75%);
+  /* Legacy support */
+
   /* Typography */
   --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-heading: 'Poppins', 'Inter', sans-serif;
-  
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
-  
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
-  --shadow-glow: 0 0 20px rgba(31, 58, 95, 0.3); /* Blue glow for trust elements */
-  --shadow-yellow-glow: 0 0 20px rgba(244, 196, 48, 0.3); /* Yellow glow for highlights */
-  
+
+  /* Shadows - Tinted */
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.16);
+  --shadow-glow: 0 0 20px rgba(31, 58, 95, 0.3);
+  /* Blue glow for trust elements */
+  --shadow-yellow-glow: 0 0 20px rgba(244, 196, 48, 0.3);
+  /* Yellow glow for highlights */
+
   /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
@@ -70,19 +103,27 @@
 
 /* Dark Mode Variables */
 [data-theme="dark"] {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --text-primary: #e0e7ff; /* Lighter blue-tinted white for headings */
-  --text-secondary: #9ca3af; /* Lighter slate for body text in dark mode */
+  --bg-primary: #0F172A;
+  /* Slate 900 - Deep Navy */
+  --bg-secondary: #1E293B;
+  /* Slate 800 */
+  --text-primary: #e0e7ff;
+  /* Lighter blue-tinted white for headings */
+  --text-secondary: #9ca3af;
+  /* Lighter slate for body text in dark mode */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
   /* Colors remain consistent but may need slight adjustments for contrast */
-  --primary: #3B5A7F; /* Slightly lighter blue for dark mode visibility */
-  --secondary: #6B7280; /* Lighter slate for dark mode */
+  --primary: #3B5A7F;
+  /* Slightly lighter blue for dark mode visibility */
+  --secondary: #6B7280;
+  /* Lighter slate for dark mode */
   /* Dark mode gradients - darker, more muted */
-  --gradient-hero: linear-gradient(135deg, #2d3a4f, #1a1a2e); /* Darker hero gradient */
-  --gradient-header: linear-gradient(135deg, #2d3a4f, #1a1a2e); /* Darker header gradient */
+  --gradient-hero: linear-gradient(135deg, #2d3a4f, #1a1a2e);
+  /* Darker hero gradient */
+  --gradient-header: linear-gradient(135deg, #2d3a4f, #1a1a2e);
+  /* Darker header gradient */
 }
 
 /* Reset & Base Styles */
@@ -102,13 +143,19 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  background-image: var(--gradient-ambient); /* Ambient background gradients */
+  background-image: var(--gradient-ambient);
+  /* Ambient background gradients */
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -162,7 +209,8 @@ img {
 .btn {
   display: inline-block;
   padding: 12px 32px;
-  border: 2px solid var(--accent-red); /* Red border */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Subtle border instead of red */
   border-radius: var(--radius-md);
   font-family: var(--font-primary);
   font-size: 1rem;
@@ -170,10 +218,13 @@ img {
   text-align: center;
   cursor: pointer;
   transition: var(--transition-base);
-  background: var(--gradient-button); /* Blue to Yellow gradient */
-  color: white !important; /* White text for visibility on any background */
+  background: var(--gradient-button);
+  /* Blue to Yellow gradient */
+  color: white !important;
+  /* White text for visibility on any background */
   box-shadow: var(--shadow-sm);
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
+  /* Prevent text wrapping */
 }
 
 /* Buttons with white backgrounds should use primary color text */
@@ -189,7 +240,8 @@ img {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.35); /* Yellow glow on hover */
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.35);
+  /* Yellow glow on hover */
 }
 
 .btn:active {
@@ -197,26 +249,58 @@ img {
 }
 
 .btn-primary {
-  background: var(--gradient-button); /* Blue to Yellow gradient */
-  border: 2px solid var(--accent-red); /* Red border */
-  color: white !important; /* White text for visibility */
+  background: var(--gradient-button);
+  /* Blue to Yellow gradient */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Subtle border */
+  color: white !important;
+  /* White text for visibility */
 }
 
 .btn-secondary {
   background: var(--support-indigo);
-  border: 2px solid var(--accent-red);
-  color: white !important; /* White text for visibility */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white !important;
+  /* White text for visibility */
+}
+
+.btn-success {
+  background: var(--success);
+  border: 2px solid var(--success);
+  color: white !important;
+}
+
+.btn-success:hover {
+  background: #15803d;
+  /* Darker green */
+  border-color: #15803d;
+  box-shadow: 0 0 15px rgba(22, 163, 74, 0.4);
+}
+
+.btn-info {
+  background: var(--info);
+  border: 2px solid var(--info);
+  color: white !important;
+}
+
+.btn-info:hover {
+  background: #0284c7;
+  /* Darker cyan */
+  border-color: #0284c7;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
 }
 
 .btn-outline {
   background: transparent;
   border: 2px solid var(--primary);
-  color: var(--primary) !important; /* Ensure primary blue color in bright mode */
+  color: var(--primary) !important;
+  /* Ensure primary blue color in bright mode */
 }
 
 .btn-outline:hover {
   background: var(--primary);
-  color: white !important; /* White text when filled */
+  color: white !important;
+  /* White text when filled */
 }
 
 /* Filter group clear filters button - white text in all modes */
@@ -233,7 +317,8 @@ img {
 [data-theme="dark"] .btn-primary,
 [data-theme="dark"] .btn-secondary,
 [data-theme="dark"] .btn-outline:hover {
-  color: white !important; /* Always white text in dark mode for clarity */
+  color: white !important;
+  /* Always white text in dark mode for clarity */
 }
 
 /* Filter group button - white text in dark mode too */
@@ -281,13 +366,13 @@ img {
 .neomorphic {
   background: #f8f9fa;
   border-radius: var(--radius-lg);
-  box-shadow: 
+  box-shadow:
     8px 8px 16px rgba(0, 0, 0, 0.1),
     -8px -8px 16px rgba(255, 255, 255, 0.9);
 }
 
 .neomorphic:hover {
-  box-shadow: 
+  box-shadow:
     4px 4px 8px rgba(0, 0, 0, 0.1),
     -4px -4px 8px rgba(255, 255, 255, 0.9);
 }
@@ -342,20 +427,53 @@ img {
 }
 
 /* Spacing Utilities */
-.mt-1 { margin-top: var(--spacing-xs); }
-.mt-2 { margin-top: var(--spacing-sm); }
-.mt-3 { margin-top: var(--spacing-md); }
-.mt-4 { margin-top: var(--spacing-lg); }
+.mt-1 {
+  margin-top: var(--spacing-xs);
+}
 
-.mb-1 { margin-bottom: var(--spacing-xs); }
-.mb-2 { margin-bottom: var(--spacing-sm); }
-.mb-3 { margin-bottom: var(--spacing-md); }
-.mb-4 { margin-bottom: var(--spacing-lg); }
+.mt-2 {
+  margin-top: var(--spacing-sm);
+}
 
-.p-1 { padding: var(--spacing-xs); }
-.p-2 { padding: var(--spacing-sm); }
-.p-3 { padding: var(--spacing-md); }
-.p-4 { padding: var(--spacing-lg); }
+.mt-3 {
+  margin-top: var(--spacing-md);
+}
+
+.mt-4 {
+  margin-top: var(--spacing-lg);
+}
+
+.mb-1 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.mb-2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mb-3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.mb-4 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.p-1 {
+  padding: var(--spacing-xs);
+}
+
+.p-2 {
+  padding: var(--spacing-sm);
+}
+
+.p-3 {
+  padding: var(--spacing-md);
+}
+
+.p-4 {
+  padding: var(--spacing-lg);
+}
 
 /* Text Utilities */
 .text-center {
@@ -381,7 +499,9 @@ img {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Badge - Question Number Badge Style */
@@ -391,9 +511,12 @@ img {
   border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 600;
-  background: var(--accent-yellow); /* Yellow background */
-  border: 2px solid var(--accent-red); /* Red border */
-  color: var(--primary); /* Blue text */
+  background: var(--accent-yellow);
+  /* Yellow background */
+  border: 2px solid var(--accent-red);
+  /* Red border */
+  color: var(--primary);
+  /* Blue text */
 }
 
 /* Error styles - Red for critical states only */
@@ -422,7 +545,8 @@ img {
 .progress-bar {
   width: 100%;
   height: 8px;
-  background: var(--secondary); /* Graphite progress track */
+  background: var(--secondary);
+  /* Graphite progress track */
   border-radius: var(--radius-sm);
   overflow: hidden;
   position: relative;
@@ -430,7 +554,8 @@ img {
 
 .progress-fill {
   height: 100%;
-  background: var(--gradient-progress); /* Blue to Yellow gradient */
+  background: var(--gradient-progress);
+  /* Blue to Yellow gradient */
   border-radius: var(--radius-sm);
   transition: width 0.3s ease;
 }
@@ -442,7 +567,8 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--gradient-progress-critical); /* Red overlay for critical threshold */
+  background: var(--gradient-progress-critical);
+  /* Red overlay for critical threshold */
   opacity: 0.7;
 }
 
@@ -451,7 +577,8 @@ img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: var(--gradient-timer); /* Conic gradient - Blue to Yellow to Red */
+  background: var(--gradient-timer);
+  /* Conic gradient - Blue to Yellow to Red */
   position: relative;
   display: flex;
   align-items: center;
@@ -463,7 +590,8 @@ img {
   position: absolute;
   width: 80%;
   height: 80%;
-  background: var(--secondary); /* Graphite center */
+  background: var(--secondary);
+  /* Graphite center */
   border-radius: 50%;
 }
 
@@ -476,7 +604,21 @@ img {
   display: block;
 }
 
+/* New Semantic Utilities */
+.text-success {
+  color: var(--success) !important;
+}
 
+.bg-success-subtle {
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
 
+.text-info {
+  color: var(--info) !important;
+}
 
-
+.bg-info-subtle {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--info);
+}

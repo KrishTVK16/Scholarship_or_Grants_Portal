@@ -3,8 +3,10 @@
    ============================================ */
 
 /* Header & Navigation */
+/* Header & Navigation */
 .header {
-  background: var(--gradient-header); /* Blue to Graphite gradient */
+  background: var(--nav-bg);
+  /* Deep Navy */
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
@@ -39,7 +41,8 @@
   gap: var(--spacing-xs);
   font-size: 1.5rem;
   font-weight: 700;
-  color: white; /* White text on gradient header */
+  color: white;
+  /* White text on gradient header */
   cursor: pointer;
   transition: var(--transition-base);
   text-decoration: none;
@@ -66,7 +69,8 @@
 }
 
 .nav-link {
-  color: white; /* White text on gradient header */
+  color: white;
+  /* White text on gradient header */
   font-weight: 500;
   padding: 8px 16px;
   border-radius: var(--radius-sm);
@@ -77,12 +81,17 @@
 
 .nav-link:hover {
   color: white;
-  background: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
+  background: var(--nav-hover);
+  /* Soft Blue */
 }
 
 .nav-link.active {
-  color: var(--accent-yellow); /* Yellow text for active link */
-  background: rgba(255, 255, 255, 0.15);
+  color: var(--accent-yellow);
+  /* Yellow text for active link */
+  background: rgba(255, 255, 255, 0.1);
+  /* Softer background */
+  border-radius: 20px;
+  /* Pill shape */
 }
 
 .nav-link.active::after {
@@ -93,7 +102,8 @@
   transform: translateX(-50%);
   width: 8px;
   height: 8px;
-  background: var(--accent-red); /* Red indicator dot */
+  background: var(--accent-red);
+  /* Red indicator dot */
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
 }
@@ -115,34 +125,114 @@
   transform: translateY(-2px);
 }
 
-/* Logout Button Style */
-.nav-menu .logout-btn {
-  background: rgba(220, 38, 38, 0.2);
-  border: 2px solid rgba(220, 38, 38, 0.4);
-  color: white;
-  padding: 8px 20px;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: all 0.3s ease;
+/* Logout Button Style -- REMOVED LEGACY */
+
+/* New Navbar Actions Admin Profile */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
-.nav-menu .logout-btn:hover {
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-right: 8px;
+}
+
+.admin-icon-small {
+  font-size: 1.1rem;
+}
+
+.admin-label-small {
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.logout-btn-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, 0.15);
+  /* New style red tint */
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #ef4444;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+.logout-btn-small:hover {
   background: rgba(220, 38, 38, 0.3);
-  border-color: rgba(220, 38, 38, 0.6);
-  transform: translateY(-2px);
+  color: #dc2626;
+  transform: scale(1.05);
+}
+
+.logout-icon {
+  display: inline-block;
+  transform: translateY(1px);
+  /* micro-adjustment */
 }
 
 /* Login Button Style */
-.nav-menu .nav-link[href*="login"] {
-  border: 2px solid white; /* White border on gradient header */
+/* Login & Sign Up Button Styles */
+.nav-menu .nav-link[href*="login"],
+.nav-menu .nav-link[href*="register"] {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* White border */
+  border-radius: var(--radius-md);
   border-radius: var(--radius-md);
   padding: 8px 20px;
+  /* Standardized padding (Matches Admin: 8px 20px) */
+  min-width: 110px;
+  /* Fixed width for consistency */
+  text-align: center;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Sign Up Specific Style - Gradient */
+.nav-menu .nav-link[href*="register"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.nav-menu .nav-link[href*="register"]:hover {
+  background: var(--gradient-button);
+  /* Blue-Yellow Gradient on Hover */
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
 }
 
 .nav-menu .nav-link[href*="login"]:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border-color: white;
+  background: white;
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Ensure Sign Up button matches */
+.nav-menu .btn {
+  padding: 10px 24px !important;
+  /* Match Login button */
+  min-width: 110px;
+  /* Match Login button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
 }
 
 /* Dropdown Menu */
@@ -154,7 +244,8 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--bg-secondary); /* Use secondary background for better contrast in bright mode */
+  background: var(--bg-secondary);
+  /* Use secondary background for better contrast in bright mode */
   min-width: 200px;
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-md);
@@ -166,7 +257,8 @@
   transition: var(--transition-base);
   z-index: 1000;
   margin-top: var(--spacing-xs);
-  border: 1px solid rgba(30, 58, 138, 0.1); /* Subtle border for definition */
+  border: 1px solid rgba(30, 58, 138, 0.1);
+  /* Subtle border for definition */
 }
 
 .nav-item-dropdown.active .nav-dropdown {
@@ -221,7 +313,8 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: white; /* White on gradient header */
+  color: white;
+  /* White on gradient header */
   transition: color 0.3s ease;
 }
 
@@ -240,7 +333,8 @@
   height: 40px;
   border: none;
   background: transparent;
-  color: white; /* White on gradient header */
+  color: white;
+  /* White on gradient header */
   font-size: 1.25rem;
   cursor: pointer;
   display: flex;
@@ -254,7 +348,8 @@
 .theme-toggle:hover {
   opacity: 0.7;
   transform: scale(1.1);
-  color: white; /* Keep white on hover */
+  color: white;
+  /* Keep white on hover */
 }
 
 /* Dark mode - theme toggle stays white on header */
@@ -281,7 +376,8 @@
   z-index: 1;
   backface-visibility: hidden;
   transform: translateZ(0);
-  transition: background 0.5s ease; /* Smooth theme transition */
+  transition: background 0.5s ease;
+  /* Smooth theme transition */
 }
 
 .hero::before {
@@ -293,7 +389,8 @@
   bottom: 0;
   background: var(--gradient-radial-glow);
   opacity: 0.5;
-  transition: opacity 0.5s ease; /* Smooth theme transition */
+  transition: opacity 0.5s ease;
+  /* Smooth theme transition */
 }
 
 /* CTA sections with gradient-hero background should also transition */
@@ -351,14 +448,16 @@
   text-align: center;
   padding: var(--spacing-md);
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(91, 111, 214, 0.1)); /* Blue gradient */
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(91, 111, 214, 0.1));
+  /* Blue gradient */
   transition: var(--transition-base);
   position: relative;
   z-index: 1;
 }
 
 [data-theme="dark"] .stat-card {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(91, 111, 214, 0.2)); /* Blue gradient for dark mode */
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(91, 111, 214, 0.2));
+  /* Blue gradient for dark mode */
 }
 
 .stat-card:hover {
@@ -370,11 +469,18 @@
 .stat-number {
   font-size: 3rem;
   font-weight: 700;
-  color: white; /* White text on graphite background */
+  color: white;
+  /* White text on graphite background */
   margin-bottom: var(--spacing-xs);
 }
 
-.stat-label { font-size: 1rem; color: rgba(255, 255, 255, 0.9); font-weight: 500; position: relative; z-index: 2; }
+.stat-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
 
 /* Section title in stats section - white text for visibility on dark background */
 .stats-section .section-title {
@@ -389,7 +495,8 @@
 }
 
 .scholarship-card {
-  background: var(--secondary); /* Graphite background */
+  background: var(--secondary);
+  /* Graphite background */
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -431,9 +538,24 @@
   flex-direction: column;
 }
 
-.scholarship-card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--spacing-xs); color: white !important; text-align: left; position: relative; z-index: 2; }
+.scholarship-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: white !important;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
 
-.scholarship-card-text { color: rgba(255, 255, 255, 0.9) !important; margin-bottom: var(--spacing-sm); flex-grow: 1; text-align: left; position: relative; z-index: 2; }
+.scholarship-card-text {
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: var(--spacing-sm);
+  flex-grow: 1;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
 
 .scholarship-card-footer {
   display: flex;
@@ -496,7 +618,8 @@
 .category-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: white; /* White text on graphite background */
+  color: white;
+  /* White text on graphite background */
   margin-bottom: var(--spacing-xs);
 }
 
@@ -513,7 +636,8 @@
 }
 
 .step-card {
-  background: var(--secondary); /* Graphite background */
+  background: var(--secondary);
+  /* Graphite background */
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   text-align: center;
@@ -558,11 +682,13 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: var(--spacing-xs);
-  color: white; /* White text on graphite background */
+  color: white;
+  /* White text on graphite background */
 }
 
 .step-description {
-  color: rgba(255, 255, 255, 0.8); /* Light text on graphite background */
+  color: rgba(255, 255, 255, 0.8);
+  /* Light text on graphite background */
   text-align: center;
 }
 
@@ -798,7 +924,8 @@
 .form-input {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid var(--secondary); /* Use slate for borders */
+  border: 2px solid var(--secondary);
+  /* Use slate for borders */
   border-radius: var(--radius-sm);
   font-family: var(--font-primary);
   font-size: 1rem;
@@ -808,14 +935,17 @@
 }
 
 .form-input.error {
-  border-color: var(--accent-red); /* Red for errors */
-  box-shadow: 0 0 0 3px rgba(192, 54, 44, 0.1); /* Red focus shadow for errors */
+  border-color: var(--accent-red);
+  /* Red for errors */
+  box-shadow: 0 0 0 3px rgba(192, 54, 44, 0.1);
+  /* Red focus shadow for errors */
 }
 
 .form-input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); /* Blue focus shadow */
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  /* Blue focus shadow */
 }
 
 .form-textarea {
@@ -842,6 +972,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -852,6 +983,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -862,6 +994,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -869,12 +1002,19 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-10px);
   }
+
   60% {
     transform: translateY(-5px);
   }
@@ -895,8 +1035,10 @@
 /* Scroll Animations */
 .scroll-animate {
   opacity: 0;
-  transform: translateY(50px); /* Increased from 30px for more noticeable effect */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Increased from 0.6s to 0.8s for smoother animation */
+  transform: translateY(50px);
+  /* Increased from 30px for more noticeable effect */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  /* Increased from 0.6s to 0.8s for smoother animation */
   position: relative;
   z-index: 1;
   will-change: opacity, transform;
@@ -966,7 +1108,8 @@
 .search-input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); /* Blue focus shadow */
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  /* Blue focus shadow */
 }
 
 .search-icon {
@@ -998,7 +1141,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  justify-content: flex-start; /* Align all items to start */
+  justify-content: flex-start;
+  /* Align all items to start */
 }
 
 .filter-label {
@@ -1006,7 +1150,8 @@
   font-weight: 600;
   color: var(--text-secondary);
   text-align: left;
-  min-height: 1.25rem; /* Ensure consistent label height */
+  min-height: 1.25rem;
+  /* Ensure consistent label height */
   line-height: 1.25rem;
 }
 
@@ -1018,14 +1163,17 @@
   font-size: 0.875rem;
   cursor: pointer;
   transition: var(--transition-base);
-  height: 42px; /* Match button height */
+  height: 42px;
+  /* Match button height */
   box-sizing: border-box;
 }
 
 /* Ensure button in filter group matches select height */
 .filter-group .btn {
-  height: 42px; /* Match filter-select height */
-  padding: 10px 12px; /* Match filter-select padding */
+  height: 42px;
+  /* Match filter-select height */
+  padding: 10px 12px;
+  /* Match filter-select padding */
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -1073,19 +1221,3 @@
   margin-bottom: var(--spacing-md);
   font-size: 0.875rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="icon" href="logo10.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -99,12 +102,16 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) translateX(0);
             }
+
             33% {
                 transform: translateY(-20px) translateX(10px);
             }
+
             66% {
                 transform: translateY(10px) translateX(-10px);
             }
@@ -489,18 +496,24 @@
         }
 
         @keyframes iconPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
         }
 
         @keyframes iconBounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1) rotate(0deg);
             }
+
             50% {
                 transform: scale(1.15) rotate(10deg);
             }
@@ -664,6 +677,7 @@
             0% {
                 transform: translateX(-100%);
             }
+
             100% {
                 transform: translateX(100%);
             }
@@ -813,10 +827,13 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 1;
             }
+
             50% {
                 transform: scale(1.5);
                 opacity: 0.7;
@@ -978,6 +995,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -990,10 +1008,13 @@
         }
 
         @keyframes statusPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.8;
                 transform: scale(1.1);
@@ -1019,9 +1040,9 @@
                 gap: var(--spacing-xs);
             }
         }
-
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -1031,13 +1052,16 @@
                 <span>ScholarHub</span>
             </a>
             <ul class="nav-menu">
-                <li class="admin-text">
-                    <span class="admin-icon">👤</span>
-                    <span class="admin-label">Admin</span>
-                </li>
-                <li><a href="index.html" class="nav-link logout-btn" id="logoutBtn">Logout</a></li>
+                <!-- Navigation Links -->
             </ul>
             <div class="navbar-actions">
+                <div class="admin-profile">
+                    <span class="admin-icon-small">👤</span>
+                    <span class="admin-label-small">Admin</span>
+                </div>
+                <a href="index.html" class="nav-link logout-btn-small" id="logoutBtn" title="Logout">
+                    <span class="logout-icon">↪</span>
+                </a>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
                 <button class="mobile-menu-toggle">☰</button>
             </div>
@@ -1045,19 +1069,7 @@
     </header>
 
     <!-- Dashboard Hero Section -->
-    <section class="dashboard-hero">
-        <div class="dashboard-hero-shapes">
-            <div class="hero-shape shape-1"></div>
-            <div class="hero-shape shape-2"></div>
-            <div class="hero-shape shape-3"></div>
-        </div>
-        <div class="container">
-            <div class="dashboard-hero-content">
-                <h1 class="scroll-animate">ScholarHub Dashboard</h1>
-                <p class="scroll-animate">Track and manage your scholarship applications in one place</p>
-            </div>
-        </div>
-    </section>
+    <!-- Dashboard Hero Removed -->
 
     <!-- Main Dashboard Content -->
     <section class="section">
@@ -1076,8 +1088,8 @@
                         <div class="kpi-value">620</div>
                         <div class="kpi-trend">
                             <span>Total applications submitted</span>
-                </div>
-                </div>
+                        </div>
+                    </div>
                     <div class="kpi-card scroll-animate">
                         <div class="kpi-label">Reviewed</div>
                         <div class="kpi-value">310</div>
@@ -1091,8 +1103,8 @@
                         <div class="kpi-trend positive">
                             <span>19.4% approval rate</span>
                         </div>
+                    </div>
                 </div>
-            </div>
 
                 <!-- Application Funnel -->
                 <div class="funnel-container">
@@ -1171,11 +1183,11 @@
                     <div class="dashboard-widget">
                         <h3 class="widget-title">Recent Applications</h3>
                         <div class="application-list">
-                        <div class="application-item">
+                            <div class="application-item">
                                 <div class="application-header">
                                     <h4 class="application-name">Merit-Based Excellence Scholarship</h4>
                                     <span class="application-status status-pending">Pending</span>
-                            </div>
+                                </div>
                                 <div class="application-details">
                                     <span class="detail-item">📅 Applied: Oct 15, 2024</span>
                                     <span class="detail-item">💰 Amount: $10,000</span>
@@ -1187,12 +1199,12 @@
                                         <div class="progress-fill-small" style="width: 75%;"></div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="application-item">
+                            </div>
+                            <div class="application-item">
                                 <div class="application-header">
                                     <h4 class="application-name">STEM Innovation Grant</h4>
                                     <span class="application-status status-approved">Approved</span>
-                            </div>
+                                </div>
                                 <div class="application-details">
                                     <span class="detail-item">📅 Applied: Oct 10, 2024</span>
                                     <span class="detail-item">💰 Amount: $15,000</span>
@@ -1201,15 +1213,17 @@
                                 <div class="application-progress">
                                     <div class="progress-label">Application Progress: 100%</div>
                                     <div class="progress-bar-small">
-                                        <div class="progress-fill-small" style="width: 100%; background: linear-gradient(90deg, var(--primary), #10B981);"></div>
+                                        <div class="progress-fill-small"
+                                            style="width: 100%; background: linear-gradient(90deg, var(--primary), #10B981);">
+                                        </div>
                                     </div>
-                        </div>
-                        </div>
-                        <div class="application-item">
+                                </div>
+                            </div>
+                            <div class="application-item">
                                 <div class="application-header">
                                     <h4 class="application-name">Community Service Award</h4>
                                     <span class="application-status status-reviewing">Under Review</span>
-                            </div>
+                                </div>
                                 <div class="application-details">
                                     <span class="detail-item">📅 Applied: Sep 28, 2024</span>
                                     <span class="detail-item">💰 Amount: $8,000</span>
@@ -1218,9 +1232,11 @@
                                 <div class="application-progress">
                                     <div class="progress-label">Application Progress: 60%</div>
                                     <div class="progress-bar-small">
-                                        <div class="progress-fill-small" style="width: 60%; background: linear-gradient(90deg, var(--primary), var(--accent-yellow));"></div>
+                                        <div class="progress-fill-small"
+                                            style="width: 60%; background: linear-gradient(90deg, var(--primary), var(--accent-yellow));">
+                                        </div>
                                     </div>
-                        </div>
+                                </div>
                             </div>
                         </div>
                         <div style="margin-top: var(--spacing-md); text-align: center;">
@@ -1237,17 +1253,17 @@
                                 <div class="status-info">
                                     <div class="status-name">Pending</div>
                                     <div class="status-count">210 applications</div>
-                                    </div>
-                                <div class="status-percentage">33.9%</div>
                                 </div>
+                                <div class="status-percentage">33.9%</div>
+                            </div>
                             <div class="status-item">
                                 <div class="status-indicator status-reviewing"></div>
                                 <div class="status-info">
                                     <div class="status-name">Under Review</div>
                                     <div class="status-count">190 applications</div>
-                            </div>
+                                </div>
                                 <div class="status-percentage">30.6%</div>
-                                    </div>
+                            </div>
                             <div class="status-item">
                                 <div class="status-indicator status-approved"></div>
                                 <div class="status-info">
@@ -1309,34 +1325,34 @@
                                 <div class="deadline-date">
                                     <div class="deadline-day">25</div>
                                     <div class="deadline-month">Nov</div>
-                            </div>
+                                </div>
                                 <div class="deadline-info">
                                     <div class="deadline-name">STEM Innovation Grant</div>
                                     <div class="deadline-time">5 days remaining</div>
+                                </div>
                             </div>
-                        </div>
                             <div class="deadline-item">
                                 <div class="deadline-date">
                                     <div class="deadline-day">30</div>
                                     <div class="deadline-month">Nov</div>
-                    </div>
+                                </div>
                                 <div class="deadline-info">
                                     <div class="deadline-name">International Student Scholarship</div>
                                     <div class="deadline-time">10 days remaining</div>
-                </div>
-            </div>
+                                </div>
+                            </div>
                             <div class="deadline-item">
                                 <div class="deadline-date">
                                     <div class="deadline-day">05</div>
                                     <div class="deadline-month">Dec</div>
-        </div>
+                                </div>
                                 <div class="deadline-info">
                                     <div class="deadline-name">Arts & Humanities Fellowship</div>
                                     <div class="deadline-time">15 days remaining</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
-                </div>
 
                     <!-- Performance Summary -->
                     <div class="dashboard-widget">
@@ -1345,17 +1361,17 @@
                             <div class="metric-item">
                                 <div class="metric-label">Average Response Time</div>
                                 <div class="metric-value">3.2 days</div>
-                </div>
+                            </div>
                             <div class="metric-item">
                                 <div class="metric-label">Applications This Month</div>
                                 <div class="metric-value">45</div>
-            </div>
+                            </div>
                             <div class="metric-item">
                                 <div class="metric-label">Approval Rate</div>
                                 <div class="metric-value">85%</div>
-                </div>
-            </div>
-        </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1366,10 +1382,10 @@
     <script src="js/animations.js"></script>
     <script>
         // Logout functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const logoutBtn = document.getElementById('logoutBtn');
             if (logoutBtn) {
-                logoutBtn.addEventListener('click', function(e) {
+                logoutBtn.addEventListener('click', function (e) {
                     e.preventDefault();
                     // Redirect to home page
                     window.location.href = 'index.html';
@@ -1378,4 +1394,5 @@
         });
     </script>
 </body>
+
 </html>
