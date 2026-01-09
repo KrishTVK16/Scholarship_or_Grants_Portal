@@ -69,7 +69,7 @@ const scholarshipsData = [
 let filteredScholarships = [...scholarshipsData];
 
 // Initialize
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('searchInput');
   const categoryFilter = document.getElementById('categoryFilter');
   const levelFilter = document.getElementById('levelFilter');
@@ -77,11 +77,22 @@ document.addEventListener('DOMContentLoaded', function() {
   const clearFiltersBtn = document.getElementById('clearFilters');
   const resultsContainer = document.getElementById('resultsContainer');
   const resultsCount = document.getElementById('resultsCount');
-  
+
+  // Filter Toggle Logic
+  const filterToggleBtn = document.getElementById('filterToggle');
+  const filtersSection = document.querySelector('.filters-section');
+
+  if (filterToggleBtn && filtersSection) {
+    filterToggleBtn.addEventListener('click', function () {
+      filtersSection.classList.toggle('expanded');
+      this.classList.toggle('active');
+    });
+  }
+
   // Render scholarships
   function renderScholarships(scholarships) {
     if (!resultsContainer) return;
-    
+
     if (scholarships.length === 0) {
       resultsContainer.innerHTML = `
         <div class="empty-state">
@@ -92,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       return;
     }
-    
+
     resultsContainer.innerHTML = scholarships.map(scholarship => `
       <div class="scholarship-card scroll-animate">
         <img src="${scholarship.image}" alt="${scholarship.title}" class="scholarship-card-img" loading="lazy">
@@ -107,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
     `).join('');
-    
+
     // Trigger scroll animations
     setTimeout(() => {
       const animateElements = document.querySelectorAll('.scroll-animate');
@@ -118,68 +129,68 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       }, { threshold: 0.1 });
-      
+
       animateElements.forEach(el => observer.observe(el));
     }, 100);
   }
-  
+
   // Update results count
   function updateResultsCount(count) {
     if (resultsCount) {
       resultsCount.textContent = `Found ${count} ${count === 1 ? 'scholarship' : 'scholarships'}`;
     }
   }
-  
+
   // Filter and search
   function filterScholarships() {
     const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
     const category = categoryFilter ? categoryFilter.value : 'all';
     const level = levelFilter ? levelFilter.value : 'all';
     const sort = sortFilter ? sortFilter.value : 'default';
-    
+
     filteredScholarships = scholarshipsData.filter(scholarship => {
       const matchesSearch = scholarship.title.toLowerCase().includes(searchTerm) ||
-                          scholarship.description.toLowerCase().includes(searchTerm);
+        scholarship.description.toLowerCase().includes(searchTerm);
       const matchesCategory = category === 'all' || scholarship.category === category;
       const matchesLevel = level === 'all' || scholarship.level === level;
-      
+
       return matchesSearch && matchesCategory && matchesLevel;
     });
-    
+
     // Sort
     if (sort === 'amount-high') {
-      filteredScholarships.sort((a, b) => parseFloat(b.amount.replace('$', '').replace(',', '')) - 
-                                  parseFloat(a.amount.replace('$', '').replace(',', '')));
+      filteredScholarships.sort((a, b) => parseFloat(b.amount.replace('$', '').replace(',', '')) -
+        parseFloat(a.amount.replace('$', '').replace(',', '')));
     } else if (sort === 'amount-low') {
-      filteredScholarships.sort((a, b) => parseFloat(a.amount.replace('$', '').replace(',', '')) - 
-                                  parseFloat(b.amount.replace('$', '').replace(',', '')));
+      filteredScholarships.sort((a, b) => parseFloat(a.amount.replace('$', '').replace(',', '')) -
+        parseFloat(b.amount.replace('$', '').replace(',', '')));
     } else if (sort === 'deadline') {
       filteredScholarships.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
     }
-    
+
     renderScholarships(filteredScholarships);
     updateResultsCount(filteredScholarships.length);
   }
-  
+
   // Event listeners
   if (searchInput) {
     searchInput.addEventListener('input', debounce(filterScholarships, 300));
   }
-  
+
   if (categoryFilter) {
     categoryFilter.addEventListener('change', filterScholarships);
   }
-  
+
   if (levelFilter) {
     levelFilter.addEventListener('change', filterScholarships);
   }
-  
+
   if (sortFilter) {
     sortFilter.addEventListener('change', filterScholarships);
   }
-  
+
   if (clearFiltersBtn) {
-    clearFiltersBtn.addEventListener('click', function() {
+    clearFiltersBtn.addEventListener('click', function () {
       if (searchInput) searchInput.value = '';
       if (categoryFilter) categoryFilter.value = 'all';
       if (levelFilter) levelFilter.value = 'all';
@@ -187,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
       filterScholarships();
     });
   }
-  
+
   // Initial render
   renderScholarships(filteredScholarships);
   updateResultsCount(filteredScholarships.length);

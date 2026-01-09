@@ -7,19 +7,19 @@
   .container {
     padding: 0 var(--spacing-sm);
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .grid-4 {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -40,52 +40,54 @@
     z-index: 999;
     overflow-y: auto;
   }
-  
+
   [data-theme="dark"] .nav-menu {
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
   }
-  
+
   .nav-menu.active {
     right: 0;
   }
-  
+
   .mobile-menu-toggle {
     display: block;
-    color: white; /* White on header */
+    color: white;
+    /* White on header */
   }
-  
+
   /* In mobile menu, use theme text color */
   .nav-menu .mobile-menu-toggle {
     color: var(--text-primary);
   }
-  
+
   .navbar-actions {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
   }
-  
+
   .theme-toggle {
     display: flex !important;
     width: 35px;
     height: 35px;
     font-size: 1.1rem;
-    color: white; /* White on header, even in mobile menu when header is visible */
+    color: white;
+    /* White on header, even in mobile menu when header is visible */
   }
-  
+
   /* In mobile menu, use theme text color */
   .nav-menu .theme-toggle {
     color: var(--text-primary);
   }
-  
+
   [data-theme="dark"] .nav-menu .theme-toggle {
     color: var(--text-primary);
   }
-  
+
   .nav-item-dropdown {
     width: 100%;
   }
-  
+
   .nav-dropdown {
     position: static;
     opacity: 0;
@@ -101,43 +103,43 @@
     overflow: hidden;
     transition: opacity 0.3s ease, max-height 0.3s ease;
   }
-  
+
   [data-theme="dark"] .nav-dropdown {
     background: rgba(122, 143, 107, 0.15);
   }
-  
+
   .nav-item-dropdown.active .nav-dropdown {
     opacity: 1;
     visibility: visible;
     max-height: 200px;
   }
-  
+
   .nav-dropdown-link {
     padding: 8px 16px;
     color: var(--text-primary) !important;
   }
-  
+
   .nav-dropdown-link:hover {
     color: #1E3A8A !important;
     background: rgba(30, 58, 138, 0.1);
   }
-  
+
   [data-theme="dark"] .nav-dropdown-link:hover {
     color: var(--primary) !important;
   }
-  
+
   .nav-dropdown-link.active {
     color: #1E3A8A !important;
   }
-  
+
   [data-theme="dark"] .nav-dropdown-link.active {
     color: var(--primary) !important;
   }
-  
+
   .nav-menu .nav-link {
     color: var(--text-primary);
   }
-  
+
   .nav-menu .btn {
     color: white;
   }
@@ -148,27 +150,27 @@
   h1 {
     font-size: 2rem;
   }
-  
+
   h2 {
     font-size: 1.75rem;
   }
-  
+
   h3 {
     font-size: 1.25rem;
   }
-  
+
   .hero {
     min-height: 500px;
   }
-  
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -184,52 +186,54 @@
     z-index: 999;
     overflow-y: auto;
   }
-  
+
   [data-theme="dark"] .nav-menu {
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
   }
-  
+
   .nav-menu.active {
     right: 0;
   }
-  
+
   .mobile-menu-toggle {
     display: block;
-    color: white; /* White on header */
+    color: white;
+    /* White on header */
   }
-  
+
   /* In mobile menu, use theme text color */
   .nav-menu .mobile-menu-toggle {
     color: var(--text-primary);
   }
-  
+
   .navbar-actions {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
   }
-  
+
   .theme-toggle {
     display: flex !important;
     width: 35px;
     height: 35px;
     font-size: 1.1rem;
-    color: white; /* White on header, even in mobile menu when header is visible */
+    color: white;
+    /* White on header, even in mobile menu when header is visible */
   }
-  
+
   /* In mobile menu, use theme text color */
   .nav-menu .theme-toggle {
     color: var(--text-primary);
   }
-  
+
   [data-theme="dark"] .nav-menu .theme-toggle {
     color: var(--text-primary);
   }
-  
+
   .nav-item-dropdown {
     width: 100%;
   }
-  
+
   .nav-dropdown {
     position: static;
     opacity: 0;
@@ -245,66 +249,66 @@
     overflow: hidden;
     transition: opacity 0.3s ease, max-height 0.3s ease;
   }
-  
+
   [data-theme="dark"] .nav-dropdown {
     background: rgba(122, 143, 107, 0.15);
   }
-  
+
   .nav-item-dropdown.active .nav-dropdown {
     opacity: 1;
     visibility: visible;
     max-height: 200px;
   }
-  
+
   .nav-dropdown-link {
     padding: 8px 16px;
     color: var(--text-primary) !important;
   }
-  
+
   .nav-dropdown-link:hover {
     color: #1E3A8A !important;
     background: rgba(30, 58, 138, 0.1);
   }
-  
+
   [data-theme="dark"] .nav-dropdown-link:hover {
     color: var(--primary) !important;
   }
-  
+
   .nav-dropdown-link.active {
     color: #1E3A8A !important;
   }
-  
+
   [data-theme="dark"] .nav-dropdown-link.active {
     color: var(--primary) !important;
   }
-  
+
   .nav-menu .nav-link {
     color: var(--text-primary);
   }
-  
+
   .nav-menu .btn {
     color: white;
   }
-  
+
   .grid-2,
   .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
   }
-  
+
   .stat-number {
     font-size: 2.5rem;
   }
-  
+
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .filters-grid {
     grid-template-columns: 1fr;
   }
@@ -333,16 +337,41 @@
     color: var(--text-primary) !important;
     border-color: var(--accent-yellow);
   }
-  
+
+  /* Responsive Filter Toggle Logic */
+  .filter-toggle-btn {
+    display: flex;
+    /* Show toggle button on mobile/tablet */
+  }
+
+  .filters-section {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+    display: block;
+    /* Ensure it exists but is hidden */
+  }
+
+  .filters-section.expanded {
+    max-height: 800px;
+    opacity: 1;
+    overflow: visible;
+    transform: translateY(0);
+    margin-top: var(--spacing-md);
+  }
+
   .hero-buttons {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .hero-buttons .btn {
     width: 100%;
   }
-  
+
   /* Ensure button text colors are visible in responsive mode */
   .hero-buttons .btn[style*="background: white"],
   .hero-buttons .btn[style*="background:white"],
@@ -350,43 +379,43 @@
   .section .btn[style*="background:white"] {
     color: var(--primary) !important;
   }
-  
+
   [data-theme="dark"] .hero-buttons .btn[style*="background: white"],
   [data-theme="dark"] .hero-buttons .btn[style*="background:white"],
   [data-theme="dark"] .section .btn[style*="background: white"],
   [data-theme="dark"] .section .btn[style*="background:white"] {
     color: var(--primary) !important;
   }
-  
+
   /* Ensure outline buttons on hero sections maintain white text */
   .hero-buttons .btn-outline[style*="color: white"],
   .section[style*="background: var(--gradient-hero)"] .btn-outline[style*="color: white"] {
     color: white !important;
   }
-  
+
   /* Ensure all button types maintain proper colors in responsive mode */
   .btn-primary,
   .btn-secondary {
     color: white !important;
   }
-  
+
   .btn-outline {
     color: var(--primary) !important;
   }
-  
+
   .btn-outline:hover {
     color: white !important;
   }
-  
+
   [data-theme="dark"] .btn-primary,
   [data-theme="dark"] .btn-secondary {
     color: white !important;
   }
-  
+
   [data-theme="dark"] .btn-outline {
     color: var(--text-primary) !important;
   }
-  
+
   [data-theme="dark"] .btn-outline:hover {
     color: white !important;
   }
@@ -397,140 +426,140 @@
   html {
     font-size: 14px;
   }
-  
+
   h1 {
     font-size: 1.75rem;
   }
-  
+
   h2 {
     font-size: 1.5rem;
   }
-  
+
   h3 {
     font-size: 1.1rem;
   }
-  
+
   .section {
     padding: var(--spacing-lg) 0;
   }
-  
+
   .hero {
     min-height: 400px;
     padding: var(--spacing-lg) var(--spacing-sm);
   }
-  
+
   .hero-title {
     font-size: 1.75rem;
   }
-  
+
   .hero-subtitle {
     font-size: 0.9rem;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-sm);
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
-  
+
   .stat-label {
     font-size: 0.875rem;
   }
-  
+
   .scholarship-card-img {
     height: 150px;
   }
-  
+
   .category-icon {
     width: 60px;
     height: 60px;
     font-size: 1.5rem;
   }
-  
+
   .step-number {
     width: 50px;
     height: 50px;
     font-size: 1.25rem;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .footer-section h3,
   .footer-section p,
   .footer-section a {
     text-align: center;
   }
-  
+
   .footer-links {
     text-align: center;
   }
-  
+
   .social-icons {
     justify-content: center;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
     gap: var(--spacing-xs);
   }
-  
+
   .footer-bottom-links {
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .navbar {
     padding: 0 var(--spacing-sm);
   }
-  
+
   .logo {
     font-size: 1.25rem;
   }
-  
+
   .logo-img {
     width: 45px;
     height: 36px;
   }
-  
+
   .footer-logo-img {
     width: 45px;
     height: 36px;
   }
-  
+
   .btn {
     padding: 10px 24px;
     font-size: 0.875rem;
   }
-  
+
   /* Ensure button colors in mobile landscape */
   .btn-primary,
   .btn-secondary {
     color: white !important;
   }
-  
+
   .btn-outline {
     color: var(--primary) !important;
   }
-  
+
   [data-theme="dark"] .btn-outline {
     color: var(--text-primary) !important;
   }
-  
+
   .card {
     padding: var(--spacing-sm);
   }
-  
+
   .search-bar {
     margin-bottom: var(--spacing-md);
   }
-  
+
   .search-input {
     padding: 12px 45px 12px 16px;
     font-size: 0.875rem;
@@ -567,131 +596,131 @@
   html {
     font-size: 13px;
   }
-  
+
   h1 {
     font-size: 1.5rem;
   }
-  
+
   h2 {
     font-size: 1.25rem;
   }
-  
+
   h3 {
     font-size: 1rem;
   }
-  
+
   .container {
     padding: 0 var(--spacing-xs);
   }
-  
+
   .section {
     padding: var(--spacing-md) 0;
   }
-  
+
   .hero {
     min-height: 350px;
     padding: var(--spacing-md) var(--spacing-xs);
   }
-  
+
   .hero-title {
     font-size: 1.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 0.85rem;
   }
-  
+
   .stat-number {
     font-size: 1.75rem;
   }
-  
+
   .stat-label {
     font-size: 0.8rem;
   }
-  
+
   .scholarship-card-img {
     height: 120px;
   }
-  
+
   .scholarship-card-title {
     font-size: 1.1rem;
   }
-  
+
   .scholarship-card-text {
     font-size: 0.875rem;
   }
-  
+
   .scholarship-amount {
     font-size: 1.1rem;
   }
-  
+
   .category-icon {
     width: 50px;
     height: 50px;
     font-size: 1.25rem;
   }
-  
+
   .category-title {
     font-size: 1.1rem;
   }
-  
+
   .step-number {
     width: 40px;
     height: 40px;
     font-size: 1rem;
   }
-  
+
   .step-title {
     font-size: 1.1rem;
   }
-  
+
   .btn {
     padding: 8px 20px;
     font-size: 0.8rem;
   }
-  
+
   /* Ensure button colors in mobile portrait */
   .btn-primary,
   .btn-secondary {
     color: white !important;
   }
-  
+
   .btn-outline {
     color: var(--primary) !important;
   }
-  
+
   [data-theme="dark"] .btn-outline {
     color: var(--text-primary) !important;
   }
-  
+
   .nav-menu {
     width: 100%;
     right: -100%;
   }
-  
+
   .logo {
     font-size: 1.1rem;
   }
-  
+
   .logo-img {
     width: 40px;
     height: 32px;
   }
-  
+
   .footer-logo-img {
     width: 40px;
     height: 32px;
   }
-  
+
   .card {
     padding: var(--spacing-xs);
   }
-  
+
   .form-input {
     padding: 10px 14px;
     font-size: 0.875rem;
   }
-  
+
   .search-input {
     padding: 10px 40px 10px 14px;
     font-size: 0.8rem;
@@ -721,7 +750,7 @@
     color: var(--text-primary) !important;
     border-color: var(--accent-yellow);
   }
-  
+
   .pagination-btn {
     padding: 6px 12px;
     font-size: 0.8rem;
@@ -737,12 +766,12 @@
     right: 20px;
     font-size: 1.25rem;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .footer-bottom-links {
     justify-content: center;
   }
@@ -753,38 +782,38 @@
   html {
     font-size: 12px;
   }
-  
+
   .hero-title {
     font-size: 1.25rem;
   }
-  
+
   .hero-subtitle {
     font-size: 0.8rem;
   }
-  
+
   .stat-number {
     font-size: 1.5rem;
   }
-  
+
   .btn {
     padding: 8px 16px;
     font-size: 0.75rem;
   }
-  
+
   /* Ensure button colors in small mobile */
   .btn-primary,
   .btn-secondary {
     color: white !important;
   }
-  
+
   .btn-outline {
     color: var(--primary) !important;
   }
-  
+
   [data-theme="dark"] .btn-outline {
     color: var(--text-primary) !important;
   }
-  
+
   .card {
     padding: 0.75rem;
   }
@@ -795,15 +824,15 @@
   .container {
     max-width: 1400px;
   }
-  
+
   .hero-title {
     font-size: 4rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.5rem;
   }
-  
+
   .grid-4 {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -811,20 +840,20 @@
 
 /* Print Styles */
 @media print {
+
   .header,
   .footer,
   .btn,
   .mobile-menu-toggle {
     display: none;
   }
-  
+
   body {
     background: white;
     color: black;
   }
-  
+
   .section {
     page-break-inside: avoid;
   }
 }
-
